@@ -22,9 +22,11 @@
 
 #define KEY_UP		1072
 #define KEY_DOWN	1080
-#define KEY_LEFT	1075
-#define KEY_RIGHT	1077
+#define KEY_LEFT	1077
+#define KEY_RIGHT	1075
 #define KEY_NONE	-1
+
+#define pii pair<int, int>
 
 // Lấy nút bàn phím do người dùng bấm
 // Trả về: Mã của phím
