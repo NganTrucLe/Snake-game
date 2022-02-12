@@ -58,5 +58,4 @@ void fixConsoleWindow();
 void resizeConsole(int width, int height);
 //end----------------------Screen----------------------end
 
-// Thay đổi màu của Console Window
-void changeColor(int code);
+void noScrollbar();
