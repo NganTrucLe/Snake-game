@@ -42,6 +42,7 @@ void Prepare() {
     resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
+    noScrollbar();
 }
 
 void gameScreen() {

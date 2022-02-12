@@ -20,9 +20,9 @@ class Fruit {
         void generateFruit() {
             corX = WALL_LEFT + rand() % rangeX + 1;
             corY = WALL_ABOVE + rand() % rangeY + 1;
-            changeColor(1 + rand() % 14);
+            setTextColor(1 + rand() % 14);
             printFruit(corX,corY);
-            changeColor(15);
+            setTextColor(15);
         }
     private:
         void printFruit(int x, int y) {

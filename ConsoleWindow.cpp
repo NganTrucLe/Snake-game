@@ -1,5 +1,8 @@
 ﻿#include "ConsoleWindow.h"
+#include <iostream>
+#include <cstdio>
 
+using namespace std;
 // Lấy nút bàn phím do người dùng bấm
 // Trả về: Mã của phím
 int inputKey()
@@ -101,7 +104,37 @@ void resizeConsole(int width, int height)
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 }
 
-void changeColor(int code) {
-	HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, code);
+void noScrollbar() {
+	// get handle to the console window
+	HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
+
+	// retrieve screen buffer info
+	CONSOLE_SCREEN_BUFFER_INFO scrBufferInfo;
+	GetConsoleScreenBufferInfo(hOut, &scrBufferInfo);
+
+	// current window size
+	short winWidth = scrBufferInfo.srWindow.Right - scrBufferInfo.srWindow.Left + 1;
+	short winHeight = scrBufferInfo.srWindow.Bottom - scrBufferInfo.srWindow.Top + 1;
+
+	// current screen buffer size
+	short scrBufferWidth = scrBufferInfo.dwSize.X;
+	short scrBufferHeight = scrBufferInfo.dwSize.Y;
+
+	// to remove the scrollbar, make sure the window height matches the screen buffer height
+	COORD newSize;
+	newSize.X = scrBufferWidth;
+	newSize.Y = winHeight;
+
+	// set the new screen buffer dimensions
+	int Status = SetConsoleScreenBufferSize(hOut, newSize);
+	//if (Status == 0)
+	//{
+	//	cout << "SetConsoleScreenBufferSize() failed! Reason : " << GetLastError() << endl;
+	//	exit(Status);
+	//}
+
+	// print the current screen buffer dimensions
+	GetConsoleScreenBufferInfo(hOut, &scrBufferInfo);
+	//cout << "Screen Buffer Size : " << scrBufferInfo.dwSize.X << " x " << scrBufferInfo.dwSize.Y << endl;
+
 }
