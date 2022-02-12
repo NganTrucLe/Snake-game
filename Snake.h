@@ -84,6 +84,9 @@ class Snake {
             int newY = position[0].second + changeY[direction];
             return (newX == WALL_LEFT || newX == WALL_RIGHT || newY == WALL_ABOVE || newY == WALL_BOTTOM);
         }
+        bool isEatFruit(pii fruit) {
+            return position[0] == fruit;
+        }
         void blink() {
             for (int i = 1; i <= 3; i++) {
                 for (pii i : position) {
@@ -95,4 +98,6 @@ class Snake {
                 Sleep(100);
             }
         }
+    private:
+
 };

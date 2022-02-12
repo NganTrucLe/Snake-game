@@ -24,15 +24,16 @@ int main()
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
-        if (MySnake.direction == 1)
-            MySnake.addDot();
         if (MySnake.isTouchWall()) {
             MySnake.blink();
             break;
         }
+        if (MySnake.isEatFruit(pii(MyFruit.corX,MyFruit.corY))) {
+            MySnake.addDot();
+            MyFruit.generateFruit();
+        }
     }
-    //for (int i = 1; i <= 255; i++)
-    //    cout << i<< " "<< (char)i << endl;
+    
 }
 
 void Prepare() {

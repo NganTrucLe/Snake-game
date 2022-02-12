@@ -8,10 +8,10 @@
 using namespace std;
 
 class Fruit {
-    int corX, corY;
-    int rangeX = WALL_LEFT - WALL_RIGHT - 2;
-    int rangeY = WALL_ABOVE - WALL_BOTTOM - 2;
+    int rangeX = WALL_RIGHT - WALL_LEFT - 2;
+    int rangeY = WALL_BOTTOM - WALL_ABOVE - 2;
     public:
+        int corX, corY;
         Fruit() {
             srand(time(NULL));
             corX = WALL_LEFT + rand() % rangeX + 1;
@@ -20,7 +20,9 @@ class Fruit {
         void generateFruit() {
             corX = WALL_LEFT + rand() % rangeX + 1;
             corY = WALL_ABOVE + rand() % rangeY + 1;
+            changeColor(1 + rand() % 14);
             printFruit(corX,corY);
+            changeColor(15);
         }
     private:
         void printFruit(int x, int y) {
