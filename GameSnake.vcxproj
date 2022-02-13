@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConsoleWindow.cpp" />
+    <ClCompile Include="Create Menu.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="Fruit.cpp" />
     <ClCompile Include="GameSnake.cpp" />
