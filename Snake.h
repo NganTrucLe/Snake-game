@@ -12,13 +12,16 @@ class Snake {
     const int changeX[4] = { 0, 1, -1, 0 };
     const int changeY[4] = { -1, 0, 0, 1 };
     const char bodyChar = 254;
+    const char MSSV[24] = { '2','1','1','2','7','7','0','9',
+                            '2','1','1','2','7','6','0','5',
+                            '2','1','1','2','7','6','0','1' };
     public:
         int length;
         int speed;
         vector<pii> position;
         int direction;
         Snake() {
-            length = 3;
+            length = 5;
             srand(time(NULL));
             direction = rand() % 4;
             speed = 100;
@@ -30,11 +33,13 @@ class Snake {
             }
         }
         void printSnake() {
+            int cnt = -1;
             for (pii i : position) {
                 gotoXY(i.first, i.second);
                 if (i == *position.begin())
                     cout << (char)2;
-                else cout << (char)bodyChar;
+                else cout << MSSV[cnt];
+                cnt++;
             }
         }
         void move() {
@@ -48,6 +53,7 @@ class Snake {
             Sleep(speed);
         }
         void addDot() {
+            if (length == 25) return;
             position.push_back(position.back());
             for (int i = length - 1; i >= 1; i--) {
                 position[i] = position[i - 1];
