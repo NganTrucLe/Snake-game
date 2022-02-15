@@ -11,3 +11,7 @@
 using namespace std;
 
 void drawWall(); 
+void drawScoreBoard();
+void drawScore(int score);
+void drawKeyMove();
+void drawGate(int x,int y);

@@ -138,3 +138,5 @@ void noScrollbar() {
 	//cout << "Screen Buffer Size : " << scrBufferInfo.dwSize.X << " x " << scrBufferInfo.dwSize.Y << endl;
 
 }
+
+
