@@ -1,7 +1,7 @@
 ﻿#include "ConsoleWindow.h"
 #include <iostream>
 #include <cstdio>
-
+// testing fetch data
 using namespace std;
 // Lấy nút bàn phím do người dùng bấm
 // Trả về: Mã của phím
