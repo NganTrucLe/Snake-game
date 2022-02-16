@@ -21,7 +21,6 @@ int main()
     Level_1();
     drawScoreBoard(); 
     Snake MySnake;
-    MySnake.printSnake();
     Fruit MyFruit;
     MyFruit.generateFruit();
     while (1) {
@@ -30,7 +29,7 @@ int main()
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
-        if (MySnake.isTouchWall()) {
+        if (MySnake.isDeath()) {
             MySnake.blink();
             break;
         }

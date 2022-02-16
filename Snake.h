@@ -8,13 +8,25 @@
 using namespace std;
 
 class Snake {
-    const int UP = 0, LEFT = 1, RIGHT = 2, DOWN = 3;
-    const int changeX[4] = { 0, 1, -1, 0 };
-    const int changeY[4] = { -1, 0, 0, 1 };
-    const char bodyChar = 254;
-    const char MSSV[24] = { '2','1','1','2','7','7','0','9',
-                            '2','1','1','2','7','6','0','5',
-                            '2','1','1','2','7','6','0','1' };
+    private:
+        const int UP = 0, LEFT = 1, RIGHT = 2, DOWN = 3;
+        const int changeX[4] = { 0, 1, -1, 0 };
+        const int changeY[4] = { -1, 0, 0, 1 };
+        const char bodyChar = 254;
+        const char MSSV[24] = { '2','1','1','2','7','7','0','9',
+                                '2','1','1','2','7','6','0','5',
+                                '2','1','1','2','7','6','0','1' };
+        bool isTouchWall() {
+            int newX = position[0].first + changeX[direction];
+            int newY = position[0].second + changeY[direction];
+            return (newX == WALL_LEFT || newX == WALL_RIGHT || newY == WALL_ABOVE || newY == WALL_BOTTOM);
+        }
+        bool isTouchBody() {
+            for (int i = 1; i < length; i++)
+                if (position[0] == position[i])
+                    return 1;
+            return 0;
+        }
     public:
         int length;
         int speed;
@@ -85,11 +97,9 @@ class Snake {
                 return;
             direction = newDirection;
         }
-        bool isTouchWall() {
-            int newX = position[0].first + changeX[direction];
-            int newY = position[0].second + changeY[direction];
-            return (newX == WALL_LEFT || newX == WALL_RIGHT || newY == WALL_ABOVE || newY == WALL_BOTTOM);
-        }
+        bool isDeath() {
+            return isTouchBody() || isTouchWall();
+        }       
         bool isEatFruit(pii fruit) {
             return position[0] == fruit;
         }
@@ -104,6 +114,5 @@ class Snake {
                 Sleep(100);
             }
         }
-    private:
-
+    
 };
