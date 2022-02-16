@@ -17,14 +17,13 @@ int main()
     Prepare();
     drawWall();
     Snake MySnake;
-    MySnake.printSnake();
     Fruit MyFruit;
     MyFruit.generateFruit();
     while (1) {
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
-        if (MySnake.isTouchWall()) {
+        if (MySnake.isDeath()) {
             MySnake.blink();
             break;
         }
