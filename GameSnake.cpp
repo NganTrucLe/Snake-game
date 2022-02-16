@@ -6,21 +6,27 @@
 #include "Draw.h"
 #include "Snake.h"
 #include "Fruit.h"
+#include "GameLevel.h"
 
 using namespace std;
 
 void Prepare();
 void gameScreen();
 
+int score = 0;
+
 int main()
 {
     Prepare();
-    drawWall();
+    Level_1();
+    drawScoreBoard(); 
     Snake MySnake;
     MySnake.printSnake();
     Fruit MyFruit;
     MyFruit.generateFruit();
     while (1) {
+        drawScore(score);
+        setTextColor(15);
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
@@ -31,9 +37,9 @@ int main()
         if (MySnake.isEatFruit(pii(MyFruit.corX,MyFruit.corY))) {
             MySnake.addDot();
             MyFruit.generateFruit();
+            score+=10;
         }
     }
-    
 }
 
 void Prepare() {
