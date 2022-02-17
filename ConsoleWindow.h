@@ -59,3 +59,4 @@ void resizeConsole(int width, int height);
 //end----------------------Screen----------------------end
 
 void noScrollbar();
+/*void fontsize(int a, int b);*/
