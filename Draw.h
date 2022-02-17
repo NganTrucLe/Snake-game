@@ -15,3 +15,5 @@ void drawScoreBoard();
 void drawScore(int score);
 void drawKeyMove();
 void drawGate(int x,int y);
+void drawWallAroundScoreBoard();
+void drawSettingsBoard();
