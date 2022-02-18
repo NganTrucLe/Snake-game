@@ -19,7 +19,6 @@ int main()
 {
     Prepare();
     Level_1();
-    drawScoreBoard(); 
     Snake MySnake;
     Fruit MyFruit;
     MyFruit.generateFruit();
@@ -39,6 +38,10 @@ int main()
             score+=10;
         }
     }
+    /*for (int i = 0; i <= 256; i++)
+    {
+        cout << i << ":" << (char)i<<endl;
+    }*/
 }
 
 void Prepare() {
