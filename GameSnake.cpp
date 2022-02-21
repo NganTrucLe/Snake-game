@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstdio>
 #include <vector>
 #include <Windows.h>
@@ -7,6 +7,7 @@
 #include "Snake.h"
 #include "Fruit.h"
 #include "GameLevel.h"
+#include "Menu.h"
 
 using namespace std;
 
@@ -18,6 +19,9 @@ int score = 0;
 int main()
 {
     Prepare();
+    tittle();
+    loadingBar();
+    menuOptions();
     Level_1();
     Snake MySnake;
     Fruit MyFruit;
