@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cstdio>
+#include "GameLevel.h"
 #include "ConsoleWindow.h"
 
 #define WALL_LEFT 3
@@ -17,4 +18,4 @@ void drawKeyMove();
 void drawGate(int x,int y);
 void drawWallAroundScoreBoard();
 void drawSettingsBoard();
-void announceGameOver();
+void announceGameOver(int score);
