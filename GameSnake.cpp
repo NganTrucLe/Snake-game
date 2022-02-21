@@ -21,7 +21,7 @@ int score = 0;
 int main()
 {
     Prepare();
-    tittle();
+    title();
     loadingBar();
     menuOptions();
     Game MyGame;
@@ -34,14 +34,9 @@ int main()
 }
 
 void Prepare() {
-    system("cls");
     clrscr();
     resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
-}
-
-void gameScreen() {
-
 }

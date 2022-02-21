@@ -1,4 +1,9 @@
 #pragma once
 void menuOptions();
-void tittle();
+void title();
 void loadingBar();
+void newGame();
+void continuePage();
+void introduction();
+void leaderBoard();
+void exitGame();
