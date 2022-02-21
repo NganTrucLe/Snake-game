@@ -144,12 +144,14 @@
     <ClCompile Include="Fruit.cpp" />
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameSnake.cpp" />
+    <ClCompile Include="Menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="Fruit.h" />
     <ClInclude Include="GameLevel.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
