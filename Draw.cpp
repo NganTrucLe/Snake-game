@@ -107,3 +107,7 @@ void drawSettingsBoard()
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 20);
 	cout << "SAVE AND EXIT";
 }
+void announceGameOver() {
+	gotoXY(50, 30);
+	cout << "GAME OVER";
+}
