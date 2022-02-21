@@ -28,6 +28,8 @@
 #define SPACE_BAR	32
 #define ENTER		13
 #define ESCAPE		27
+#define KEY_B		98
+#define KEY_P		112
 
 #define pii pair<int, int>
 
