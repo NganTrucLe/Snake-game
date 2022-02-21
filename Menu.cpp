@@ -143,6 +143,7 @@ void menuOptions()
                 cout << "Do you want to exit the game?" << endl;
                 cout << "1. Yes";
                 cout << "2. No";
+              
             }
             
         }
