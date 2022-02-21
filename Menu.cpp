@@ -23,14 +23,12 @@ void loadingBar()
             Sleep(25);
     }
     system("cls");
-    
+    clrscr();
 }
-void tittle()
+void title()
 {
-    
-    
     setTextColor(10);
-    
+    gotoXY(0, 0);
     cout <<    R"(                                  
      
                     
@@ -54,14 +52,18 @@ void tittle()
 void menuOptions()
 {
     setTextColor(2);
-    tittle();
+    title();
 
     int Set[] = { 7,7,7,7,7 }; // Màu mặc định
     int counter = 3;
-    char key;
-    for (int i = 0; ; )
+    int key;
+    while (1)
     {
-
+        title();
+        //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
+        for (int i = 0; i < 5; i++)
+            Set[i] = 7;
+        Set[counter - 1] = 12;
 
         gotoXY(59, 20);
         setTextColor(Set[0]);
@@ -83,25 +85,22 @@ void menuOptions()
         setTextColor(Set[4]);
         cout << "5. Exit game";
 
-        key = _getch();
-
-
-        if (key == 72 && (counter >= 2 && counter <= 5))
+        key = inputKey(); // đồng bộ toàn chương trình, lấy hàm trong ConsoleWindow.h
+        if (key == KEY_UP && (counter >= 2 && counter <= 5)) // đồng bộ toàn chương trình, lấy define 
         {
-            counter--;
-            
+
+            counter--; 
         }
-        if (key == 80 && (counter >= 1 && counter <= 4))
+        if (key == KEY_DOWN && (counter >= 1 && counter <= 4))
         {
             counter++;
-            
         }
-        if (key == '\r')//Người dùng nhấn phím enter
+        
+        if (key == ENTER)//Người dùng nhấn phím enter
         {
             if (counter == 1)
             {
-                system("cls");
-                cout << "What is your name?";
+                newGame();
             }
             if (counter == 2)
             {
@@ -113,30 +112,7 @@ void menuOptions()
             }
             if (counter == 4)
             {
-                setTextColor(9);
-                cout << R"(                                                                                                                                                     
-                                        .___        __                    .___             __  .__               
-                                        |   | _____/  |________  ____   __| _/_ __   _____/  |_|__| ____   ____  
-                                        |   |/    \   __\_  __ \/  _ \ / __ |  |  \_/ ___\   __\  |/  _ \ /    \ 
-                                        |   |   |  \  |  |  | \(  <_> ) /_/ |  |  /\  \___|  | |  (  <_> )   |  \
-                                        |___|___|  /__|  |__|   \____/\____ |____/  \___  >__| |__|\____/|___|  /
-                                                 \/                        \/           \/                    \/ 
-                        
-
-)";
-                setTextColor(13);
-                gotoXY(59, 20);
-                cout << "DO AN RAN SAN MOI HCMUS 21CLC01" << endl;
-                gotoXY(59, 21);
-                cout << "Giao vien huong dan: Truong Toan Thinh" << endl;
-                gotoXY(59, 22);
-                cout << "Danh sach thanh vien: " << endl;
-                gotoXY(59, 23);
-                cout << "1. Le Vu Ngan Truc: Nhom truong - 21127709" << endl;
-                gotoXY(59, 24);
-                cout << "2. Cao Hoai Yen Vy - 21127205" << endl;
-                gotoXY(59, 25);
-                cout << "3. Au Duong Khang - 21127621" << endl;
+                introduction();
             }
             if (counter == 5)
             {
@@ -147,34 +123,56 @@ void menuOptions()
             }
             
         }
-
-        Set[0] = 7;
-        Set[1] = 7;
-        Set[2] = 7;
-        Set[3] = 7;
-        Set[4] = 7;
-
-        if (counter == 1)
-        {
-            Set[0] = 12;
-        }
-        if (counter == 2)
-        {
-            Set[1] = 12;
-        }
-        if (counter == 3)
-        {
-            Set[2] = 12;
-        }
-        if (counter == 4)
-        {
-            Set[3] = 12;
-        }
-        if (counter == 5)
-        {
-            Set[4] = 12;
-        }
-
-
     }
 }
+void newGame() {
+    system("cls");
+    cout << "What is your name?\n";
+    cout << "Back to MENU? Press B";
+    while (1) {
+        int key = inputKey();
+        if (key == KEY_B) {
+            clrscr();
+            return;
+        }
+    }
+}
+void continuePage();
+void introduction() {
+    clrscr();
+    setTextColor(9);
+    gotoXY(0, 0);
+    cout << R"(                                                                                                                                                     
+                                        .___        __                    .___             __  .__               
+                                        |   | _____/  |________  ____   __| _/_ __   _____/  |_|__| ____   ____  
+                                        |   |/    \   __\_  __ \/  _ \ / __ |  |  \_/ ___\   __\  |/  _ \ /    \ 
+                                        |   |   |  \  |  |  | \(  <_> ) /_/ |  |  /\  \___|  | |  (  <_> )   |  \
+                                        |___|___|  /__|  |__|   \____/\____ |____/  \___  >__| |__|\____/|___|  /
+                                                 \/                        \/           \/                    \/ 
+                        
+
+)";
+    setTextColor(13);
+    gotoXY(59, 20);
+    cout << "DO AN RAN SAN MOI HCMUS 21CLC01" << endl;
+    gotoXY(59, 21);
+    cout << "Giao vien huong dan: Truong Toan Thinh" << endl;
+    gotoXY(59, 22);
+    cout << "Danh sach thanh vien: " << endl;
+    gotoXY(59, 23);
+    cout << "1. Le Vu Ngan Truc: Nhom truong - 21127709" << endl;
+    gotoXY(59, 24);
+    cout << "2. Cao Hoai Yen Vy - 21127205" << endl;
+    gotoXY(59, 25);
+    cout << "3. Au Duong Khang - 21127621" << endl;
+    cout << "Back to MENU? Press B";
+    while (1) {
+        int key = inputKey();
+        if (key == KEY_B) {
+            clrscr();
+            return;
+        }
+    }
+}
+void leaderBoard();
+void exitGame();

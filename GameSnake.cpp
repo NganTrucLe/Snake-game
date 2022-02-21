@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <cstdio>
 #include <vector>
+#include <conio.h>
 #include <Windows.h>
 #include "ConsoleWindow.h"
 #include "Draw.h"
@@ -8,6 +9,7 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "Menu.h"
+#include "Game.h"
 
 using namespace std;
 
@@ -19,29 +21,12 @@ int score = 0;
 int main()
 {
     Prepare();
-    tittle();
+    title();
     loadingBar();
     menuOptions();
-    Level_1();
-    Snake MySnake;
-    Fruit MyFruit;
-    MyFruit.generateFruit();
-    while (1) {
-        drawScore(score);
-        setTextColor(15);
-        MySnake.move();
-        int key = inputKey();
-        MySnake.changeDirection(key);
-        if (MySnake.isDeath()) {
-            MySnake.blink();
-            break;
-        }
-        if (MySnake.isEatFruit(pii(MyFruit.corX,MyFruit.corY))) {
-            MySnake.addDot();
-            MyFruit.generateFruit();
-            score+=10;
-        }
-    }
+    Game MyGame;
+    MyGame.startNewGame();
+    MyGame.gameControl();
     /*for (int i = 0; i <= 256; i++)
     {
         cout << i << ":" << (char)i<<endl;
@@ -49,14 +34,9 @@ int main()
 }
 
 void Prepare() {
-    system("cls");
     clrscr();
     resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
-}
-
-void gameScreen() {
-
 }

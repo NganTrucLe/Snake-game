@@ -150,6 +150,7 @@
     <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="Fruit.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Snake.h" />
