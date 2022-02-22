@@ -9,21 +9,18 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "Menu.h"
-#include "Game.h"
+#include "GameControl.h"
 
 using namespace std;
 
 void Prepare();
-void gameScreen();
-
-int score = 0;
 
 int main()
 {
     Prepare();
-    title();
-    loadingBar();
-    menuOptions();
+    //title();
+    //loadingBar();
+    //menuOptions();
     Game MyGame;
     MyGame.startNewGame();
     MyGame.gameControl();
