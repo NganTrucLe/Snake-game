@@ -107,7 +107,28 @@ void drawSettingsBoard()
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 20);
 	cout << "SAVE AND EXIT";
 }
-void announceGameOver() {
-	gotoXY(50, 30);
-	cout << "GAME OVER";
+void announceGameOver(int score) {
+	char a;
+	Level_1();
+	setTextColor(11);
+	gotoXY(39, 11);
+	cout << "GAME OVER" << endl;
+	gotoXY(36, 12);
+	cout << "Your score:" << score;
+	gotoXY(37, 13);
+	cout << "Try again? (y/n):";
+	cin >> a;
+	if (a == 'y')
+	{
+
+	}
+	if (a == 'n')
+	{
+
+	}
+	for (int i = 0; i < 10; i++)
+	{
+		cout << endl;
+	}
+	setTextColor(15);
 }
