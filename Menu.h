@@ -7,3 +7,4 @@ void continuePage();
 void introduction();
 void leaderBoard();
 void exitGame();
+void drawLeaderboard();
