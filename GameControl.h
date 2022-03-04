@@ -84,7 +84,7 @@ private:
     bool gameOver() {
         if (MySnake.isDeath()) {
             MySnake.blink();
-            announceGameOver();
+            announceGameOver(score);
             return 1;
         }
         return 0;
