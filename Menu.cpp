@@ -4,7 +4,7 @@
 #include "Fruit.h"
 #include "Draw.h"
 #include <iostream>
-
+#include <stdio.h>
 using namespace std;
 void loadingBar()
 {
@@ -29,19 +29,27 @@ void title()
 {
     setTextColor(10);
     gotoXY(0, 0);
-    cout <<    R"(                                  
+    cout <<    R"(    
+
+
+
+
+
+
+
+
+                              ___ ___               __  .__                   _________              __           
+                             /   |   \ __ __  _____/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
+                            /    ~    \  |  \/    \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
+                            \    Y    /  |  /   |  \  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
+                             \___|_  /|____/|___|  /__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
+                                   \/            \/             \//_____/           \/     \/     \/     \/    \/            
+
+
+
+                                 
      
                     
-
-
-
-
-                              ___ ___         __  .__                   _________              __           
-                             /   |   \ __ ___/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
-                            /    ~    \  |  \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
-                            \    Y    /  |  /|  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
-                             \___|_  /|____/ |__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
-                                   \/                     \//_____/           \/     \/     \/     \/    \/ 
                                             
        
 )";
@@ -259,6 +267,10 @@ void drawLeaderboard()
        gotoXY(WALL_RIGHT - 1, y);
        cout << (char)176;
    }
+   for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
+       gotoXY(130, y);
+       cout << (char)176;
+   }
 }
 void exitGame()
 {
@@ -298,7 +310,7 @@ void exitGame()
    
     while (1)
     {
-        title();
+       
         //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
         for (int i = 0; i < 2; i++)
             Set[i] = 7;
@@ -329,7 +341,7 @@ void exitGame()
         {
             if (counter == 1)
             {
-                break;
+                exit(0);
             }
             if (counter == 2)
             {
