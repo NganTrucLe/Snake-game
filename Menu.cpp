@@ -249,12 +249,12 @@ void leaderBoard()
 }
 void drawLeaderboard()
 {
-    for (int x = WALL_LEFT + 1; x <= 130; x++)
+    for (int x = WALL_LEFT + 1; x <= 120; x++)
     {
         gotoXY(x, WALL_ABOVE + 6);
         cout << (char)240;
     }
-   for (int x = WALL_LEFT + 1; x <= 130; x++)
+   for (int x = WALL_LEFT + 1; x <= 120; x++)
     {
         gotoXY(x, WALL_BOTTOM + 8);
         cout << (char)240;
@@ -310,7 +310,6 @@ void exitGame()
    
     while (1)
     {
-       
         //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
         for (int i = 0; i < 2; i++)
             Set[i] = 7;

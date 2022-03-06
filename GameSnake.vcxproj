@@ -154,6 +154,7 @@
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuGame.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

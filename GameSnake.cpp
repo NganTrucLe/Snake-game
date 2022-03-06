@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <cstdio>
 #include <vector>
 #include <conio.h>
@@ -9,7 +9,8 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "Menu.h"
-//#include "Game.h"
+#include "GameControl.h"
+#include "MenuGame.h"
 
 using namespace std;
 
@@ -18,16 +19,8 @@ void Prepare();
 int main()
 {
     Prepare();
-    title();
-    loadingBar();
-    menuOptions();
-    /*Game MyGame;
-    MyGame.startNewGame();
+    Game MyGame;
     MyGame.gameControl();
-    for (int i = 0; i <= 256; i++)
-    {
-        cout << i << ":" << (char)i<<endl;
-    }
 }
 
 void Prepare() {

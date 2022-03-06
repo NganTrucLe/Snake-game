@@ -18,4 +18,5 @@ void drawKeyMove();
 void drawGate(int x,int y);
 void drawWallAroundScoreBoard();
 void drawSettingsBoard();
+void drawLeaderBoard();
 void announceGameOver(int score);
