@@ -151,8 +151,10 @@
     <ClInclude Include="Draw.h" />
     <ClInclude Include="Fruit.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Menu.h" />
+    <ClInclude Include="MenuGame.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -7,28 +7,41 @@
 #include "Snake.h"
 #include "Fruit.h"
 #include "GameLevel.h"
+#include "MenuGame.h"
 
 #define NOT_IN_GAME 0
-#define IN_GAME 1
-#define PAUSE 2
-#define GAME_OVER 3
+#define IN_GAME     1
+#define PAUSE       2
+#define GAME_OVER   3
+#define MENU        4
+
 using namespace std;
 
 class Game {
     Snake MySnake;
     Fruit MyFruit;
+    Menu MyMenu;
     int state, score, level;
 public:
     Game() {
         score = 0;
-        state = IN_GAME;
+        state = MENU;
         level = 3;
+        MyMenu.restart();
     }
     void gameControl() {
         loadLevel(level);
         MyFruit.generateFruit();
         while (1) {
             switch (state) {
+            case MENU: 
+                MyMenu.menuControl();
+                if (MyMenu.state = NEW_GAME) {
+                    state = IN_GAME;
+                    loadLevel(level);
+                    MyFruit.generateFruit();
+                }
+                break;
             case GAME_OVER:
                 // draw menu restart? back to menu? exit game?
                 handleAfterGameOver();
@@ -38,10 +51,9 @@ public:
                 setTextColor(15);
                 snakeActivities();
                 increaseScore();
-                if (gameOver()) {
+                if (gameOver()) 
                     state = GAME_OVER;
-                    break;
-                }
+                break;
             case PAUSE:
                 pauseGame();
                 break;
@@ -57,6 +69,9 @@ public:
         loadLevel(1);
         state = IN_GAME;
         score = 0;
+    }
+    void startWholeGame() {
+        state = MENU;
     }
 private:
     void increaseScore() {
@@ -90,7 +105,19 @@ private:
         return 0;
     }
     void handleAfterGameOver() {
-
+        int key = inputKey();
+        while (1) {
+            if (key == 121) {
+                startNewGame();
+                break;
+            }
+            else if (key == 110) {
+                state = MENU;
+                break;
+            }
+            key = inputKey();
+        }
+        
     }
     void restart() {
 

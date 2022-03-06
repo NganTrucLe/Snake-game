@@ -65,21 +65,21 @@ void drawScoreBoard()
 }
 void drawKeyMove()
 {
-	gotoXY(WALL_RIGHT + 18, WALL_ABOVE + 9);
+	gotoXY(WALL_RIGHT + 13, WALL_ABOVE + 9);
 	cout << "LEFT";
-	gotoXY(WALL_RIGHT + 27, WALL_ABOVE + 9);
+	gotoXY(WALL_RIGHT + 24, WALL_ABOVE + 9);
 	cout << "RIGHT";
-	gotoXY(WALL_RIGHT + 24, WALL_ABOVE + 7);
+	gotoXY(WALL_RIGHT + 20, WALL_ABOVE + 7);
 	cout << "UP";
-	gotoXY(WALL_RIGHT + 23, WALL_ABOVE + 11);
+	gotoXY(WALL_RIGHT + 19, WALL_ABOVE + 11);
 	cout << "DOWN";
-	gotoXY(WALL_RIGHT + 22, WALL_ABOVE + 9);
+	gotoXY(WALL_RIGHT + 18, WALL_ABOVE + 9);
 	cout << (char)17;
-	gotoXY(WALL_RIGHT + 26, WALL_ABOVE + 9);
+	gotoXY(WALL_RIGHT + 22, WALL_ABOVE + 9);
 	cout << (char)16;
-	gotoXY(WALL_RIGHT + 24, WALL_ABOVE + 8);
+	gotoXY(WALL_RIGHT + 20, WALL_ABOVE + 8);
 	cout << (char)30;
-	gotoXY(WALL_RIGHT + 24, WALL_ABOVE + 10);
+	gotoXY(WALL_RIGHT + 20, WALL_ABOVE + 10);
 	cout << (char)31;
 
 }
@@ -107,8 +107,29 @@ void drawSettingsBoard()
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 20);
 	cout << "SAVE AND EXIT";
 }
+void drawLeaderBoard() {
+	for (int x = WALL_LEFT + 1; x <= 120; x++)
+	{
+		gotoXY(x, WALL_ABOVE + 6);
+		cout << (char)240;
+	}
+	for (int x = WALL_LEFT + 1; x <= 120; x++)
+	{
+		gotoXY(x, WALL_BOTTOM + 8);
+		cout << (char)240;
+	}
+	for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
+		gotoXY(WALL_LEFT + 1, y);
+		cout << (char)176;
+	}
+	for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
+		gotoXY(WALL_RIGHT - 1, y);
+		cout << (char)176;
+	}
+}
 void announceGameOver(int score) {
 	char a;
+	clrscr();
 	Level_1();
 	setTextColor(11);
 	gotoXY(39, 11);
@@ -117,18 +138,5 @@ void announceGameOver(int score) {
 	cout << "Your score:" << score;
 	gotoXY(37, 13);
 	cout << "Try again? (y/n):";
-	cin >> a;
-	if (a == 'y')
-	{
-
-	}
-	if (a == 'n')
-	{
-
-	}
-	for (int i = 0; i < 10; i++)
-	{
-		cout << endl;
-	}
 	setTextColor(15);
 }

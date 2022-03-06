@@ -2,38 +2,63 @@
 #include <iostream>
 #include <cstdio>
 #include <vector>
+#include <stdio.h>
 #include "ConsoleWindow.h"
 #include "Draw.h"
 #include "Snake.h"
 #include "Fruit.h"
 #include "GameLevel.h"
 
-#define MENU            0
-#define INTRODUCTION    1
-#define LEADER_BOARD    2
-#define EXIT_GAME       3
+#define LOADING         0
+#define MENU            1
+#define INTRODUCTION    2
+#define LEADER_BOARD    3
+#define EXIT_GAME       4
+#define NEW_GAME        5
+#define LOAD_GAME       6
 
 using namespace std;
 
 class Menu {
-    int state;
 public:
+    int state;
     Menu() {
-        state = MENU;
+        state = LOADING;
     }
     void menuControl() {
         while (1) {
             switch (state) {
+            case LOADING:
+                title();
+                loadingBar();
+                state = MENU;
+                break;
+            case NEW_GAME:
+                clrscr();
+                return;
+                break;
+            case LOAD_GAME:
+                break;
             case MENU:
+                menuOptions();
                 break;
             case INTRODUCTION:
+                introduction();
                 break;
             case LEADER_BOARD:
+                leaderBoard();
+                break;
+            case EXIT_GAME:
+                exitGame();
                 break;
             }
         }
     }
-
+    void restart() {
+        state = LOADING;
+        menuControl();
+    }
+private:
     void title()
     {
         setTextColor(10);
@@ -54,17 +79,12 @@ public:
                                             
        
 )";
-
-
-
     }
     void menuOptions() {
         setTextColor(2);
         title();
-
         int Set[] = { 7,7,7,7,7 }; // Màu mặc định
-        int counter = 1;
-        int key;
+        int counter = 1, key;
         while (1)
         {
             title();
@@ -93,47 +113,16 @@ public:
             setTextColor(Set[4]);
             cout << "5. Exit game";
 
-            key = inputKey(); // đồng bộ toàn chương trình, lấy hàm trong ConsoleWindow.h
-            if (key == KEY_UP && (counter >= 2 && counter <= 5)) // đồng bộ toàn chương trình, lấy define 
-            {
-
-                counter--;
-            }
-            if (key == KEY_DOWN && (counter >= 1 && counter <= 4))
-            {
-                counter++;
-            }
+            counterEvent(key, counter, 5);
+            const int newState[5] = { NEW_GAME, LOAD_GAME, LEADER_BOARD, INTRODUCTION, EXIT_GAME };
 
             if (key == ENTER)//Người dùng nhấn phím enter
             {
-                if (counter == 1)
-                {
-                    newGame();
-                }
-                if (counter == 2)
-                {
-                    /*  loadGame();*/
-                }
-                if (counter == 3)
-                {
-
-                    leaderBoard();
-                }
-                if (counter == 4)
-                {
-                    introduction();
-                }
-                if (counter == 5)
-                {
-
-                    exitGame();
-
-                }
-
+                state = newState[counter - 1];
+                return;
             }
         }
     }
-    void title();
     void loadingBar() {
         cout << "\n\n\n";
         cout << "\t\t\t\t\tLoading ";
@@ -151,8 +140,7 @@ public:
         system("cls");
         clrscr();
     }
-    void newGame();
-    void continuePage();
+    // Menu screens 
     void introduction() {
         clrscr();
         setTextColor(9);
@@ -179,27 +167,14 @@ public:
         setTextColor(11);
         cout << "Giao vien huong dan: Truong Toan Thinh" << endl;
         gotoXY(40, 19);
-        setTextColor(11);
         cout << "Danh sach thanh vien: " << endl;
         gotoXY(40, 21);
-        setTextColor(11);
         cout << "1. Le Vu Ngan Truc: Nhom truong - 21127709" << endl;
         gotoXY(40, 23);
-        setTextColor(11);
         cout << "2. Cao Hoai Yen Vy - 21127205" << endl;
         gotoXY(40, 25);
-        setTextColor(11);
         cout << "3. Au Duong Khang - 21127621" << endl;
-        gotoXY(50, 27);
-        setTextColor(13);
-        cout << "Want to back to MENU? Press B";
-        while (1) {
-            int key = inputKey();
-            if (key == KEY_B) {
-                clrscr();
-                return;
-            }
-        }
+        backButton(50, 27);
     }
     void leaderBoard() {
         clrscr();
@@ -213,17 +188,8 @@ public:
                                         \/   \/     \/      \/    \/          \/           \/           \/ 
 
 )";
-        drawLeaderboard();
-        gotoXY(52, 33);
-        setTextColor(13);
-        cout << "Want to back to MENU? Press B";
-        while (1) {
-            int key = inputKey();
-            if (key == KEY_B) {
-                clrscr();
-                return;
-            }
-        }
+        drawLeaderBoard();
+        backButton(52, 33);
     }
     void exitGame() {
         clrscr();
@@ -243,16 +209,6 @@ public:
 
 
 )";
-        /*gotoXY(52, 33);
-        setTextColor(13);
-        cout << "Want to back to MENU? Press B";
-        while (1) {
-            int key = inputKey();
-            if (key == KEY_B) {
-                clrscr();
-                return;
-            }
-        }*/
         gotoXY(59, 20);
         setTextColor(11);
         cout << "Do you want to exit?" << endl;
@@ -275,64 +231,48 @@ public:
             setTextColor(Set[1]);
             cout << "2. No";
 
-
-
-            key = inputKey(); // đồng bộ toàn chương trình, lấy hàm trong ConsoleWindow.h
-            if (key == KEY_UP) // đồng bộ toàn chương trình, lấy define 
-            {
-
-                counter--;
-            }
-            if (key == KEY_DOWN)
-            {
-                counter++;
-            }
+            counterEvent(key, counter, 2);
 
             if (key == ENTER)//Người dùng nhấn phím enter
             {
                 if (counter == 1)
                 {
+                    exit(0);
                     break;
                 }
                 if (counter == 2)
                 {
-                    gotoXY(52, 33);
-                    setTextColor(13);
-                    cout << "Want to back to MENU? Press B";
-                    while (1) {
-                        int key = inputKey();
-                        if (key == KEY_B) {
-                            clrscr();
-                            return;
-                        }
-                    }
+                    backButton(52, 33);
+                    break;
                 }
 
             }
-
         }
     }
-    void drawLeaderboard() {
-        for (int x = WALL_LEFT + 1; x <= 120; x++)
-        {
-            gotoXY(x, WALL_ABOVE + 6);
-            cout << (char)240;
-        }
-        for (int x = WALL_LEFT + 1; x <= 120; x++)
-        {
-            gotoXY(x, WALL_BOTTOM + 8);
-            cout << (char)240;
-        }
-        for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-            gotoXY(WALL_LEFT + 1, y);
-            cout << (char)176;
-        }
-        for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-            gotoXY(WALL_RIGHT - 1, y);
-            cout << (char)176;
+    // Components
+    void backButton(int x, int y) {
+        gotoXY(x, y);
+        setTextColor(13);
+        cout << "Want to back to MENU? Press B";
+        while (1) {
+            int key = inputKey();
+            if (key == KEY_B) {
+                state = MENU;
+                clrscr();
+                return;
+            }
         }
     }
-private:
-    
+    void counterEvent(int& key, int& counter, const int num) {
+        key = inputKey(); // đồng bộ toàn chương trình, lấy hàm trong ConsoleWindow.h
+        if (key == KEY_DOWN) // đồng bộ toàn chương trình, lấy define 
+        {
+            counter = min(counter + 1, num);
+        }
+        if (key == KEY_UP)
+        {
+            counter = max(counter - 1, 1);
+        }
+    }
 };
 
