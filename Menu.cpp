@@ -4,7 +4,7 @@
 #include "Fruit.h"
 #include "Draw.h"
 #include <iostream>
-
+#include <stdio.h>
 using namespace std;
 void loadingBar()
 {
@@ -29,19 +29,27 @@ void title()
 {
     setTextColor(10);
     gotoXY(0, 0);
-    cout <<    R"(                                  
+    cout <<    R"(    
+
+
+
+
+
+
+
+
+                              ___ ___               __  .__                   _________              __           
+                             /   |   \ __ __  _____/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
+                            /    ~    \  |  \/    \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
+                            \    Y    /  |  /   |  \  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
+                             \___|_  /|____/|___|  /__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
+                                   \/            \/             \//_____/           \/     \/     \/     \/    \/            
+
+
+
+                                 
      
                     
-
-
-
-
-                              ___ ___         __  .__                   _________              __           
-                             /   |   \ __ ___/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
-                            /    ~    \  |  \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
-                            \    Y    /  |  /|  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
-                             \___|_  /|____/ |__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
-                                   \/                     \//_____/           \/     \/     \/     \/    \/ 
                                             
        
 )";
@@ -187,22 +195,22 @@ void introduction() {
 )";
     setTextColor(13);
     gotoXY(47, 15);
-    cout << "   DO AN RAN SAN MOI HCMUS 21CLC01" << endl;
+    cout << "  PROJECT HUNTING SNAKE - HCMUS - 21CLC01" << endl;
     gotoXY(40, 17);
     setTextColor(11);
-    cout << "Giao vien huong dan: Truong Toan Thinh" << endl;
+    cout << "Advisor: PhD. Truong Toan Thinh" << endl;
     gotoXY(40, 19);
     setTextColor(11);
-    cout << "Danh sach thanh vien: " << endl;
+    cout << "About us: " << endl;
     gotoXY(40, 21);
     setTextColor(11);
-    cout << "1. Le Vu Ngan Truc: Nhom truong - 21127709" << endl;
+    cout << "1. Leader - Le Vu Ngan Truc - 21127709" << endl;
     gotoXY(40, 23);
     setTextColor(11);
-    cout << "2. Cao Hoai Yen Vy - 21127205" << endl;
+    cout << "2. Member - Cao Hoai Yen Vy - 21127205" << endl;
     gotoXY(40, 25);
     setTextColor(11);
-    cout << "3. Au Duong Khang - 21127621" << endl;
+    cout << "3. Member - Au Duong Khang - 21127621" << endl;
     gotoXY(50, 27);
     setTextColor(13);
     cout << "Want to back to MENU? Press B";
@@ -259,6 +267,10 @@ void drawLeaderboard()
        gotoXY(WALL_RIGHT - 1, y);
        cout << (char)176;
    }
+   for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
+       gotoXY(130, y);
+       cout << (char)176;
+   }
 }
 void exitGame()
 {
@@ -298,7 +310,7 @@ void exitGame()
    
     while (1)
     {
-        title();
+       
         //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
         for (int i = 0; i < 2; i++)
             Set[i] = 7;
@@ -329,7 +341,7 @@ void exitGame()
         {
             if (counter == 1)
             {
-                break;
+                exit(0);
             }
             if (counter == 2)
             {

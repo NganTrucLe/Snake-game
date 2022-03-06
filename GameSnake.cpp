@@ -9,8 +9,7 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "Menu.h"
-#include "GameControl.h"
-
+//#include "Game.h"
 
 using namespace std;
 
@@ -23,16 +22,12 @@ int main()
     loadingBar();
     menuOptions();
     /*Game MyGame;
-    //title();
-    //loadingBar();
-    //menuOptions();
-    Game MyGame;
     MyGame.startNewGame();
-    MyGame.gameControl();*/
-    /*for (int i = 0; i <= 256; i++)
+    MyGame.gameControl();
+    for (int i = 0; i <= 256; i++)
     {
         cout << i << ":" << (char)i<<endl;
-    }*/
+    }
 }
 
 void Prepare() {
