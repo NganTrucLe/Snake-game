@@ -1,5 +1,6 @@
 #include "ConsoleWindow.h"
 #include "Draw.h"
+#include <vector>
 #include <iostream>
 
 #define WALL_CHALLENGE_LEFT   35
