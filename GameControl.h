@@ -22,7 +22,7 @@ public:
     Game() {
         score = 0;
         state = IN_GAME;
-        level = 3;
+        level = 1;
     }
     void gameControl() {
         loadLevel(level);
@@ -84,7 +84,7 @@ private:
     bool gameOver() {
         if (MySnake.isDeath()) {
             MySnake.blink();
-            announceGameOver();
+            announceGameOver(score);
             return 1;
         }
         return 0;

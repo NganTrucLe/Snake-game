@@ -18,9 +18,9 @@ void Prepare();
 int main()
 {
     Prepare();
-    //title();
-    //loadingBar();
-    //menuOptions();
+    title();
+    loadingBar();
+    menuOptions();
     Game MyGame;
     MyGame.startNewGame();
     MyGame.gameControl();

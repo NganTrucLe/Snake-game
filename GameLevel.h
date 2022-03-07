@@ -1,7 +1,7 @@
 #include "ConsoleWindow.h"
 #include "Draw.h"
 #include <iostream>
-
+#include <vector>
 #define WALL_CHALLENGE_LEFT   35
 #define WALL_CHALLENGE_RIGHT  50
 #define WALL_CHALLENGE_BOTTOM 13
