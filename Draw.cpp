@@ -85,7 +85,7 @@ void drawKeyMove()
 }
 void drawGate(int x,int y)
 {
-	vector <pii>gate;
+	vector<pii>gate;
 	setTextColor(14);
 	gotoXY(x, y);
 	cout << (char)221;
@@ -94,7 +94,7 @@ void drawGate(int x,int y)
 	{
 		gotoXY(i, y - 1);
 		cout << (char)220;
-		gate.push_back(pii(i, y-1));
+		gate.push_back(pii(i, y - 1));
 	}
 	gotoXY(x + 3, y);
 	cout << (char)222;
@@ -132,8 +132,8 @@ void drawLeaderBoard() {
 	}
 }
 void announceGameOver(int score) {
-	char a;
-	clrscr();
+	int key;
+	key = inputKey();
 	Level_1();
 	setTextColor(11);
 	gotoXY(39, 11);
@@ -142,5 +142,17 @@ void announceGameOver(int score) {
 	cout << "Your score:" << score;
 	gotoXY(37, 13);
 	cout << "Try again? (y/n):";
+	/*if (key == KEY_Y)
+	{
+		//continue the game with level 1
+	}
+	if (key == KEY_N)
+	{
+		//return menu game
+	}*/
+	for (int i = 0; i < 10; i++)
+	{
+		cout << endl;
+	}
 	setTextColor(15);
 }

@@ -79,45 +79,54 @@ void Level_5()
 	{
 		gotoXY(x, 5);
 		cout << (char)223;
+		wallchallenge.push_back(pii(x, 5));
 	}
 	for (int x = 50; x < 70; x++)
 	{
 		gotoXY(x, 5);
 		cout << (char)223;
+		wallchallenge.push_back(pii(x, 5));
 	}
 	for (int x = 17; x < 37; x++)
 	{
 		gotoXY(x, 19);
 		cout << (char)223;
+		wallchallenge.push_back(pii(x, 19));
 	}
 	for (int x = 50; x < 70; x++)
 	{
 		gotoXY(x, 19);
 		cout << (char)223;
+		wallchallenge.push_back(pii(x, 19));
 	}
 	for (int y = 5; y < 9; y++)
 	{
 		gotoXY(17, y);
 		cout << (char)222;
+		wallchallenge.push_back(pii(17, y));
 	}
 	for (int y = 18; y > 15; y--)
 	{
 		gotoXY(36, y);
 		cout << (char)222;
+		wallchallenge.push_back(pii(36, y));
 	}
 	for (int y = 5; y < 9; y++)
 	{
 		gotoXY(50, y);
 		cout << (char)222;
+		wallchallenge.push_back(pii(50, y));
 	}
 	for (int y = 18; y > 15; y--)
 	{
 		gotoXY(69, y);
 		cout << (char)222;
+		wallchallenge.push_back(pii(69, y));
 	}
 	for (int y = 11; y < 14; y++)
 	{
 		gotoXY(42, y);
 		cout << (char)222;
+		wallchallenge.push_back(pii(42, y));
 	}
 }
