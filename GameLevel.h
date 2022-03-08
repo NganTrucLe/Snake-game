@@ -1,11 +1,7 @@
 #include "ConsoleWindow.h"
 #include "Draw.h"
 #include <iostream>
-
-#define WALL_CHALLENGE_LEFT   35
-#define WALL_CHALLENGE_RIGHT  50
-#define WALL_CHALLENGE_BOTTOM 13
-#define WALL_CHALLENGE_ABOVE 11
+#include <vector>
 
 using namespace std;
 
