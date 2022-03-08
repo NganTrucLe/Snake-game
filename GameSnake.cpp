@@ -18,6 +18,7 @@ void Prepare();
 
 int main()
 {
+    
     Prepare();
     Game MyGame;
     MyGame.gameControl();
@@ -29,4 +30,6 @@ void Prepare() {
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
+    DisableSelection();
+    system("Color 7F");
 }
