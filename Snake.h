@@ -44,6 +44,19 @@ public:
             position[i].second -= changeY[direction];
         }
     }
+    void restart() {
+        position.resize(0);
+        length = 5;
+        srand(time(NULL));
+        direction = rand() % 4;
+        speed = 100;
+        position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
+        for (int i = 1; i < length; i++) {
+            position.push_back(position.back());
+            position[i].first -= changeX[direction];
+            position[i].second -= changeY[direction];
+        }
+    }
     void printSnake() {
         int cnt = -1;
         for (pii i : position) {

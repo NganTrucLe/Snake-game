@@ -63,19 +63,27 @@ private:
     {
         setTextColor(10);
         gotoXY(0, 0);
-        cout << R"(                                  
+        cout << R"(    
+
+
+
+
+
+
+
+    
+                                  ___ ___               __  .__                   _________              __           
+                                 /   |   \ __ __  _____/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
+                                /    ~    \  |  \/    \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
+                                \    Y    /  |  /   |  \  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
+                                 \___|_  /|____/|___|  /__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
+                                       \/            \/             \//_____/           \/     \/     \/     \/    \/            
+    
+
+
+                                 
      
                     
-
-
-
-
-                              ___ ___         __  .__                   _________              __           
-                             /   |   \ __ ___/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
-                            /    ~    \  |  \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
-                            \    Y    /  |  /|  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
-                             \___|_  /|____/ |__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
-                                   \/                     \//_____/           \/     \/     \/     \/    \/ 
                                             
        
 )";
@@ -162,18 +170,18 @@ private:
 )";
         setTextColor(13);
         gotoXY(47, 15);
-        cout << "   DO AN RAN SAN MOI HCMUS 21CLC01" << endl;
+        cout << "  PROJECT HUNTING SNAKE - HCMUS - 21CLC01" << endl;
         gotoXY(40, 17);
         setTextColor(11);
-        cout << "Giao vien huong dan: Truong Toan Thinh" << endl;
+        cout << "Advisor: PhD. Truong Toan Thinh" << endl;
         gotoXY(40, 19);
-        cout << "Danh sach thanh vien: " << endl;
+        cout << "About us: " << endl;
         gotoXY(40, 21);
-        cout << "1. Le Vu Ngan Truc: Nhom truong - 21127709" << endl;
+        cout << "1. Leader - Le Vu Ngan Truc - 21127709" << endl;
         gotoXY(40, 23);
-        cout << "2. Cao Hoai Yen Vy - 21127205" << endl;
+        cout << "2. Member - Cao Hoai Yen Vy - 21127205" << endl;
         gotoXY(40, 25);
-        cout << "3. Au Duong Khang - 21127621" << endl;
+        cout << "3. Member - Au Duong Khang - 21127621" << endl;
         backButton(50, 27);
     }
     void leaderBoard() {

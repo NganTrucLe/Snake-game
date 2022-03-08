@@ -26,7 +26,7 @@ public:
     Game() {
         score = 0;
         state = MENU;
-        level = 3;
+        level = 5;
         MyMenu.restart();
     }
     void gameControl() {
@@ -66,7 +66,12 @@ public:
         MySnake.changeDirection(key);
     }
     void startNewGame() {
-        loadLevel(1);
+        clrscr();
+        level = 1;
+        gotoXY(0, 0);
+        MySnake.restart();
+        MyFruit.generateFruit();
+        loadLevel(level);
         state = IN_GAME;
         score = 0;
     }
@@ -113,6 +118,8 @@ private:
             }
             else if (key == 110) {
                 state = MENU;
+                clrscr();
+                MyMenu.restart();
                 break;
             }
             key = inputKey();
