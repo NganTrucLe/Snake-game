@@ -94,7 +94,7 @@ void drawGate(int x,int y)
 	{
 		gotoXY(i, y - 1);
 		cout << (char)220;
-		gate.push_back(pii(i, y - 1));
+		gate.push_back(pii(i, y-1));
 	}
 	gotoXY(x + 3, y);
 	cout << (char)222;
