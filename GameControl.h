@@ -8,6 +8,7 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "MenuGame.h"
+#include "AudioandSound.h"
 
 #define NOT_IN_GAME 0
 #define IN_GAME     1
@@ -36,7 +37,7 @@ public:
             switch (state) {
             case MENU: 
                 MyMenu.menuControl();
-                if (MyMenu.state = NEW_GAME) {
+                if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
                     loadLevel(level);
                     MyFruit.generateFruit();
@@ -81,6 +82,7 @@ public:
 private:
     void increaseScore() {
         if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
+            AudioUpScore();
             MySnake.addDot();
             MyFruit.generateFruit();
             score += 10;
@@ -103,6 +105,7 @@ private:
     }
     bool gameOver() {
         if (MySnake.isDeath()) {
+            AudioGameOver();
             MySnake.blink();
             announceGameOver(score);
             return 1;

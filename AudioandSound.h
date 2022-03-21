@@ -4,5 +4,7 @@
 
 using namespace std;
 
-void PlayOpenningSound();
-
+void PlayOpeningSound();
+void AudioUpScore();
+void AudioGameOver();
+void AudioNewLevel();
