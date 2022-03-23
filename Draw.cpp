@@ -134,7 +134,7 @@ void drawLeaderBoard() {
 void announceGameOver(int score) {
 	int key;
 	key = inputKey();
-	Level_1();
+	//Level_1(wall);
 	setTextColor(11);
 	gotoXY(39, 11);
 	cout << "GAME OVER" << endl;

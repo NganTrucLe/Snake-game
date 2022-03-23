@@ -22,6 +22,7 @@ class Game {
     Fruit MyFruit;
     Menu MyMenu;
     int state, score, level;
+    vector<pii> wall;
 public:
     Game() {
         score = 0;
@@ -31,7 +32,7 @@ public:
     }
     void gameControl() {
         loadLevel(level);
-        MyFruit.generateFruit();
+        //MyFruit.generateFruit();
         while (1) {
             switch (state) {
             case MENU: 
@@ -67,7 +68,7 @@ public:
     }
     void startNewGame() {
         clrscr();
-        level = 1;
+        level = 3;
         gotoXY(0, 0);
         MySnake.restart();
         MyFruit.generateFruit();
@@ -102,7 +103,7 @@ private:
 
     }
     bool gameOver() {
-        if (MySnake.isDeath()) {
+        if (MySnake.isDeath(wall)) {
             MySnake.blink();
             announceGameOver(score);
             return 1;
@@ -132,19 +133,19 @@ private:
     void loadLevel(int n) {
         switch (n) {
         case 1:
-            Level_1();
+            Level_1(wall);
             break;
         case 2:
-            Level_2();
+            Level_2(wall);
             break;
         case 3:
-            Level_3();
+            Level_3(wall);
             break;
         case 4:
-            Level_4();
+            Level_4(wall);
             break;
         case 5:
-            Level_5();
+            Level_5(wall);
             break;
         }
     }

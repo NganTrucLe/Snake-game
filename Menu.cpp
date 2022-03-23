@@ -146,26 +146,7 @@ void newGame() {
   /*  gotoXY(53, 16);
     setTextColor(13);
     cout << "Back to MENU? Press B"; */
-    Snake MySnake;
-    Fruit MyFruit;
-    MyFruit.generateFruit();
-    while (1) {
-        //drawScore(score);
-        setTextColor(15);
-        MySnake.move();
-        int key = inputKey();
-        MySnake.changeDirection(key);
-        if (MySnake.isDeath()) {
-            MySnake.blink();
-            break;
-        }
-        if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
-            MySnake.addDot();
-            MyFruit.generateFruit();
-           /* score += 10;*/
-        }
-    }
-    while (1) {
+        while (1) {
         int key = inputKey();
         if (key == KEY_B) {
             clrscr();
