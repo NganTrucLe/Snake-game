@@ -8,7 +8,6 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "MenuGame.h"
-#include "AudioandSound.h"
 
 #define NOT_IN_GAME 0
 #define IN_GAME     1
@@ -23,6 +22,7 @@ class Game {
     Fruit MyFruit;
     Menu MyMenu;
     int state, score, level;
+    vector<pii> wall;
 public:
     Game() {
         score = 0;
@@ -32,12 +32,12 @@ public:
     }
     void gameControl() {
         loadLevel(level);
-        MyFruit.generateFruit();
+        //MyFruit.generateFruit();
         while (1) {
             switch (state) {
             case MENU: 
                 MyMenu.menuControl();
-                if (MyMenu.state == NEW_GAME) {
+                if (MyMenu.state = NEW_GAME) {
                     state = IN_GAME;
                     loadLevel(level);
                     MyFruit.generateFruit();
@@ -68,7 +68,7 @@ public:
     }
     void startNewGame() {
         clrscr();
-        level = 1;
+        level = 3;
         gotoXY(0, 0);
         MySnake.restart();
         MyFruit.generateFruit();
@@ -82,7 +82,6 @@ public:
 private:
     void increaseScore() {
         if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
-            AudioUpScore();
             MySnake.addDot();
             MyFruit.generateFruit();
             score += 10;
@@ -104,8 +103,7 @@ private:
 
     }
     bool gameOver() {
-        if (MySnake.isDeath()) {
-            AudioGameOver();
+        if (MySnake.isDeath(wall)) {
             MySnake.blink();
             announceGameOver(score);
             return 1;
@@ -135,19 +133,19 @@ private:
     void loadLevel(int n) {
         switch (n) {
         case 1:
-            Level_1();
+            Level_1(wall);
             break;
         case 2:
-            Level_2();
+            Level_2(wall);
             break;
         case 3:
-            Level_3();
+            Level_3(wall);
             break;
         case 4:
-            Level_4();
+            Level_4(wall);
             break;
         case 5:
-            Level_5();
+            Level_5(wall);
             break;
         }
     }
