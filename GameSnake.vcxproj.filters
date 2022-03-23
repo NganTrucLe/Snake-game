@@ -69,4 +69,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="success.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="Opening.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="levelup.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+    <Media Include="gameover.wav">
+      <Filter>Source Files</Filter>
+    </Media>
+  </ItemGroup>
 </Project>
