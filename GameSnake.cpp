@@ -32,5 +32,4 @@ void Prepare() {
     noCursorType();
     noScrollbar();
     DisableSelection();
-    system("Color 7F");
 }
