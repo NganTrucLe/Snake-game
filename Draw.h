@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <cstdio>
+#include <vector>
 #include "GameLevel.h"
 #include "ConsoleWindow.h"
 
