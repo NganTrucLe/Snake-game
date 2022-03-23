@@ -39,7 +39,7 @@ public:
         length = 5;
         srand(time(NULL));
         direction = rand() % 4;
-        speed = 100;
+        speed = 150;
         position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
         for (int i = 1; i < length; i++) {
             position.push_back(position.back());
@@ -52,7 +52,7 @@ public:
         length = 5;
         srand(time(NULL));
         direction = rand() % 4;
-        speed = 100;
+        speed = 150;
         position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
         for (int i = 1; i < length; i++) {
             position.push_back(position.back());
@@ -130,5 +130,6 @@ public:
             Sleep(100);
         }
     }
+  
 
 };

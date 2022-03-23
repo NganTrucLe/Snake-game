@@ -159,6 +159,12 @@
     <ClInclude Include="MenuGame.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="gameover.wav" />
+    <Media Include="levelup.wav" />
+    <Media Include="Opening.wav" />
+    <Media Include="success.wav" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
