@@ -94,7 +94,7 @@ void drawGate(int x,int y)
 	{
 		gotoXY(i, y - 1);
 		cout << (char)220;
-		gate.push_back(pii(i, y - 1));
+		gate.push_back(pii(i, y-1));
 	}
 	gotoXY(x + 3, y);
 	cout << (char)222;
@@ -138,10 +138,10 @@ void announceGameOver(int score) {
 	setTextColor(11);
 	gotoXY(39, 11);
 	cout << "GAME OVER" << endl;
-	gotoXY(36, 12);
-	cout << "Your score:" << score;
+	gotoXY(37, 12);
+	cout << "Your score: " << score;
 	gotoXY(37, 13);
-	cout << "Try again? (y/n):";
+	cout << "Try again? (Y/N)";
 	/*if (key == KEY_Y)
 	{
 		//continue the game with level 1
@@ -150,9 +150,5 @@ void announceGameOver(int score) {
 	{
 		//return menu game
 	}*/
-	for (int i = 0; i < 10; i++)
-	{
-		cout << endl;
-	}
 	setTextColor(15);
 }

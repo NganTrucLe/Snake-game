@@ -11,6 +11,7 @@
 #include "Menu.h"
 #include "GameControl.h"
 #include "MenuGame.h"
+#include "AudioandSound.h"
 
 using namespace std;
 
