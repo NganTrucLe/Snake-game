@@ -5,6 +5,8 @@
 #include "Draw.h"
 #include <iostream>
 #include <stdio.h>
+#include "SaveAndLoad.h"
+
 using namespace std;
 void loadingBar()
 {
@@ -116,7 +118,7 @@ void menuOptions()
             }
             if (counter == 3)
             {
-               
+       
                 leaderBoard();
             }
             if (counter == 4)
@@ -236,6 +238,7 @@ void leaderBoard()
 
 )";
     drawLeaderboard();
+    //ShowHighScore();
     gotoXY(52, 33);
     setTextColor(13);
     cout << "Want to back to MENU? Press B";

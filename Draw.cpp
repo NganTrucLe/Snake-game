@@ -20,9 +20,9 @@ void drawWall() {
 }
 void drawScore(int score)
 {
-	setTextColor(7);
+	setTextColor(12);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 4);
-	cout << "SCORE:" << score;
+	cout << "SCORE: " << score;
 }
 void drawWallAroundScoreBoard()
 {
@@ -134,6 +134,7 @@ void drawLeaderBoard() {
 void announceGameOver(int score) {
 	int key;
 	key = inputKey();
+	clrscr();
 	Level_1();
 	setTextColor(11);
 	gotoXY(39, 11);
