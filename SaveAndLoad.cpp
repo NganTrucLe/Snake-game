@@ -142,3 +142,7 @@ void ShowHighScore()
 	}
 	fi.close();
 }
+
+void SaveData() {
+
+}
