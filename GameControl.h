@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 #include <cstdio>
 #include <vector>
@@ -15,14 +15,17 @@
 #define PAUSE       2
 #define GAME_OVER   3
 #define MENU        4
-
+#define NEXT_LEVEL  5
 using namespace std;
 
 class Game {
     Snake MySnake;
     Fruit MyFruit;
     Menu MyMenu;
+    vector<pii>wall;
     int state, score, level;
+    vector<pii> gate; // biến này dùng để lưu vị trí các cổng
+    // tạo thêm 1 biến kiểu dữ liệu pii để lưu vị trí rắn cần vô để qua màn
 public:
     Game() {
         score = 0;
@@ -32,10 +35,9 @@ public:
     }
     void gameControl() {
         loadLevel(level);
-        MyFruit.generateFruit();
         while (1) {
             switch (state) {
-            case MENU: 
+            case MENU:
                 MyMenu.menuControl();
                 if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
@@ -52,13 +54,20 @@ public:
                 setTextColor(15);
                 snakeActivities();
                 increaseScore();
-                if (gameOver()) 
+                if (gameOver())
                     state = GAME_OVER;
+                nextLevel();
                 break;
             case PAUSE:
                 pauseGame();
                 break;
+
+            case NEXT_LEVEL:
+                isNextLevel();
+                snakeActivities();
+                break;
             }
+
         }
     }
     void snakeActivities() {
@@ -104,7 +113,7 @@ private:
 
     }
     bool gameOver() {
-        if (MySnake.isDeath()) {
+        if (MySnake.isDeath(wall)) {
             AudioGameOver();
             MySnake.blink();
             announceGameOver(score);
@@ -127,7 +136,7 @@ private:
             }
             key = inputKey();
         }
-        
+
     }
     void restart() {
 
@@ -135,20 +144,37 @@ private:
     void loadLevel(int n) {
         switch (n) {
         case 1:
-            Level_1();
+            Level_1(wall);
             break;
         case 2:
-            Level_2();
+            Level_2(wall);
             break;
         case 3:
-            Level_3();
+            Level_3(wall);
             break;
         case 4:
-            Level_4();
+            Level_4(wall);
             break;
         case 5:
-            Level_5();
+            Level_5(wall);
             break;
         }
+    }
+    void nextLevel()
+    {
+        if (score % 50 == 0 && score != 0)
+        {
+            MyFruit.deleteFruit();
+            // random position of gate
+            // kiểm tra có trùng với vị trí tường không
+            // không trùng mới in ra
+            // lưu vị trí con rắn cần đi vào để qua màn
+            drawGate(10, 10, gate);
+            state = NEXT_LEVEL;
+        }
+    }
+    void isNextLevel() {
+        // kiểm tra rắn có chạm cổng không, chạm thì set state = GAME_OVER
+        // chạm vào chỗ cần đi vào để qua màn thì tăng level lên 1, xóa màn hình vẽ lại màn mới
     }
 };

@@ -16,9 +16,12 @@ private:
     const char MSSV[24] = { '2','1','1','2','7','7','0','9',
                             '2','1','1','2','7','6','0','5',
                             '2','1','1','2','7','6','0','1' };
-    bool isTouchWall() {
+    bool isTouchWall(const vector<pii> wall) {
         int newX = position[0].first + changeX[direction];
         int newY = position[0].second + changeY[direction];
+        for (int i = 0; i < wall.size(); i++) {
+            if (pii(newX, newY) == wall[i])return 1;
+        }
         return (newX == WALL_LEFT || newX == WALL_RIGHT || newY == WALL_ABOVE || newY == WALL_BOTTOM);
     }
     bool isTouchBody() {
@@ -36,7 +39,7 @@ public:
         length = 5;
         srand(time(NULL));
         direction = rand() % 4;
-        speed = 100;
+        speed = 150;
         position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
         for (int i = 1; i < length; i++) {
             position.push_back(position.back());
@@ -49,7 +52,7 @@ public:
         length = 5;
         srand(time(NULL));
         direction = rand() % 4;
-        speed = 100;
+        speed = 150;
         position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
         for (int i = 1; i < length; i++) {
             position.push_back(position.back());
@@ -110,8 +113,8 @@ public:
             return;
         direction = newDirection;
     }
-    bool isDeath() {
-        return isTouchBody() || isTouchWall();
+    bool isDeath(const vector<pii> wall) {
+        return isTouchBody() || isTouchWall(wall);
     }
     bool isEatFruit(pii fruit) {
         return position[0] == fruit;
@@ -127,5 +130,6 @@ public:
             Sleep(100);
         }
     }
+  
 
 };

@@ -83,22 +83,22 @@ void drawKeyMove()
 	cout << (char)31;
 
 }
-void drawGate(int x,int y)
+void drawGate(int x,int y, vector<pii> gate)
 {
-	vector<pii>gate;
+	gate.resize(0);
 	setTextColor(14);
 	gotoXY(x, y);
 	cout << (char)221;
 	gate.push_back(pii(x, y));
-	for (int i = x; i < x + 4; i++)
+	for (int i = x; i < x + 3; i++)
 	{
 		gotoXY(i, y - 1);
 		cout << (char)220;
 		gate.push_back(pii(i, y-1));
 	}
-	gotoXY(x + 3, y);
+	gotoXY(x + 2, y);
 	cout << (char)222;
-	gate.push_back(pii(x+3, y));
+	gate.push_back(pii(x+2, y));
 }
 void drawSettingsBoard()
 {
@@ -134,8 +134,11 @@ void drawLeaderBoard() {
 void announceGameOver(int score) {
 	int key;
 	key = inputKey();
+
 	clrscr();
 	Level_1();
+	//Level_1(wall);
+  
 	setTextColor(11);
 	gotoXY(39, 11);
 	cout << "GAME OVER" << endl;

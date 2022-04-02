@@ -16,7 +16,7 @@ void drawWall();
 void drawScoreBoard();
 void drawScore(int score);
 void drawKeyMove();
-void drawGate(int x,int y);
+void drawGate(int x,int y, vector<pii> gate);
 void drawWallAroundScoreBoard();
 void drawSettingsBoard();
 void drawLeaderBoard();

@@ -24,6 +24,10 @@ class Fruit {
             printFruit(corX,corY);
             setTextColor(15);
         }
+        void deleteFruit() {
+            gotoXY(corX, corY);
+            cout << (char)255;
+        }
     private:
         void printFruit(int x, int y) {
             const int symbol[5] = {3, 4, 5, 6, 14};
