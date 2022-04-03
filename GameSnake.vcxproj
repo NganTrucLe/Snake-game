@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -146,6 +146,7 @@
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameSnake.cpp" />
     <ClCompile Include="Menu.cpp" />
+    <ClCompile Include="SaveAndLoad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioandSound.h" />
@@ -157,13 +158,18 @@
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="MenuGame.h" />
+    <ClInclude Include="SaveAndLoad.h" />
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <ItemGroup>
+
+    <Text Include="highscore.txt" />
+
     <Media Include="gameover.wav" />
     <Media Include="levelup.wav" />
     <Media Include="Opening.wav" />
     <Media Include="success.wav" />
+
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

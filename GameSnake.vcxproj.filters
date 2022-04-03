@@ -36,6 +36,9 @@
     <ClCompile Include="AudioandSound.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SaveAndLoad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleWindow.h">
@@ -68,6 +71,14 @@
     <ClInclude Include="AudioandSound.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SaveAndLoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="highscore.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="success.wav">
