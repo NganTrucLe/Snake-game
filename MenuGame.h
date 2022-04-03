@@ -93,37 +93,26 @@ private:
         title();
         int Set[] = { 7,7,7,7,7 }; // Màu mặc định
         int counter = 1, key;
+        char menuList[5][20] = { "1. New game", "2. Continue", "3. Leaderboard", "4. Introduction", "5. Exit game"};
+        int positionY[5] = { 20,22,24,26,28 };
         while (1)
         {
-            title();
+            counterEvent(key, counter, 5);
             //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
             for (int i = 0; i < 5; i++)
                 Set[i] = 7;
             Set[counter - 1] = 12;
-
-            gotoXY(59, 20);
-            setTextColor(Set[0]);
-            cout << "1. New game";
-
-            gotoXY(59, 22);
-            setTextColor(Set[1]);
-            cout << "2. Continue";
-
-            gotoXY(59, 24);
-            setTextColor(Set[2]);
-            cout << "3. Leaderboard";
-
-            gotoXY(59, 26);
-            setTextColor(Set[3]);
-            cout << "4. Introduction";
-
-            gotoXY(59, 28);
-            setTextColor(Set[4]);
-            cout << "5. Exit game";
-
-            counterEvent(key, counter, 5);
+            for (int i = 0; i < 5; i++) {
+                gotoXY(59, positionY[i]);
+                setTextColor(Set[i]);
+                cout << menuList[i];
+                gotoXY(55, positionY[i]);
+                if (counter - 1 != i) cout << (char)255;
+            }
+            gotoXY(55, positionY[counter - 1]);
+            setTextColor(12);
+            cout << (char)16;
             const int newState[5] = { NEW_GAME, LOAD_GAME, LEADER_BOARD, INTRODUCTION, EXIT_GAME };
-
             if (key == ENTER)//Người dùng nhấn phím enter
             {
                 state = newState[counter - 1];
