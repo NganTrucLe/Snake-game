@@ -10,27 +10,28 @@
 #include "MenuGame.h"
 #include "AudioandSound.h"
 
-#define NOT_IN_GAME 0
-#define IN_GAME     1
-#define PAUSE       2
-#define GAME_OVER   3
-#define MENU        4
-#define NEXT_LEVEL  5
+#define NOT_IN_GAME     0
+#define IN_GAME         1
+#define PAUSE           2
+#define GAME_OVER       3
+#define MENU            4
+#define NEXT_LEVEL      5
+#define INCREASE_LEVEL  6
 using namespace std;
 
 class Game {
     Snake MySnake;
     Fruit MyFruit;
     Menu MyMenu;
-    vector<pii>wall;
+    vector<pii> wall, gate;
+    const int speedLevel[5] = { 175, 150, 125, 100, 75};
     int state, score, level;
-    vector<pii> gate; // biến này dùng để lưu vị trí các cổng
-    // tạo thêm 1 biến kiểu dữ liệu pii để lưu vị trí rắn cần vô để qua màn
+    pii nextLevelPosition;
 public:
     Game() {
         score = 0;
-        state = MENU;
-        level = 5;
+        state = IN_GAME;
+        level = 1;
         MyMenu.restart();
     }
     void gameControl() {
@@ -61,16 +62,27 @@ public:
             case PAUSE:
                 pauseGame();
                 break;
-
-            case NEXT_LEVEL:
-                isNextLevel();
-                snakeActivities();
+            case INCREASE_LEVEL:
+                increaseLevel();
                 break;
             }
 
         }
     }
     void snakeActivities() {
+        if (MySnake.appearing >= 0) {
+            MySnake.appear[MySnake.appearing] = 1;
+            MySnake.appearing++;
+            if (MySnake.appearing == MySnake.length) {
+                MySnake.appearing = -1;
+                for (pii i : gate) {
+                    gotoXY(i.first, i.second);
+                    cout << (char)255;
+                }
+                gate.resize(0);
+                MyFruit.generateFruit();
+            }
+        }
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
@@ -89,6 +101,7 @@ public:
         state = MENU;
     }
 private:
+    const pii gate_position[5] = { pii(43,12),pii(80,10),pii(10,10),pii(43,12),pii(10,10) };
     void increaseScore() {
         if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
             AudioUpScore();
@@ -113,7 +126,7 @@ private:
 
     }
     bool gameOver() {
-        if (MySnake.isDeath(wall)) {
+        if (MySnake.isDeath(wall, gate)) {
             AudioGameOver();
             MySnake.blink();
             announceGameOver(score);
@@ -138,6 +151,23 @@ private:
         }
 
     }
+    void processWin() {
+        announceWin();
+        int key = inputKey();
+        while (1) {
+            /*if (key == 121) {
+                startNewGame();
+                break;
+            }
+            else if (key == 110) {
+                state = MENU;
+                clrscr();
+                MyMenu.restart();
+                break;
+            }
+            key = inputKey();*/
+        }
+    }
     void restart() {
 
     }
@@ -159,22 +189,42 @@ private:
             Level_5(wall);
             break;
         }
+        MySnake.speed = speedLevel[n-1];
     }
     void nextLevel()
     {
-        if (score % 50 == 0 && score != 0)
+        if (score == 5 * 10) {
+            processWin();
+        }
+        if (score == 10*level)
         {
             MyFruit.deleteFruit();
-            // random position of gate
-            // kiểm tra có trùng với vị trí tường không
-            // không trùng mới in ra
-            // lưu vị trí con rắn cần đi vào để qua màn
-            drawGate(10, 10, gate);
-            state = NEXT_LEVEL;
+            drawGate(gate_position[level - 1].first, gate_position[level-1].second, gate);
+            nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;
+            nextLevelPosition.second = gate[0].second;
+        }
+        if (MySnake.isNextLevel(nextLevelPosition)) {
+            MySnake.disappearing = 0;
+            state = INCREASE_LEVEL;
         }
     }
-    void isNextLevel() {
-        // kiểm tra rắn có chạm cổng không, chạm thì set state = GAME_OVER
-        // chạm vào chỗ cần đi vào để qua màn thì tăng level lên 1, xóa màn hình vẽ lại màn mới
+    void increaseLevel() {
+        if (MySnake.disappearing < 0)return;
+        for (int i = 0; i < MySnake.length; i++) {
+            MySnake.move();
+            MySnake.appear[MySnake.disappearing] = 0;
+            MySnake.disappearing++;
+        }
+        MySnake.move();
+        MySnake.disappearing = -1;
+        deleteGameScreen();
+        level++;
+        loadLevel(level);
+        drawGate(gate_position[level - 1].first, gate_position[level - 1].second, gate);
+        nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;
+        nextLevelPosition.second = gate[0].second;
+        MySnake.init(nextLevelPosition, 3);
+        MySnake.appearing = 0;
+        state = IN_GAME;
     }
 };

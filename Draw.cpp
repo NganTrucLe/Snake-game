@@ -1,4 +1,4 @@
-#include "Draw.h"
+﻿#include "Draw.h"
 
 void drawWall() {
 	for (int x = WALL_LEFT; x <= WALL_RIGHT; x++) {
@@ -83,10 +83,10 @@ void drawKeyMove()
 	cout << (char)31;
 
 }
-void drawGate(int x,int y, vector<pii> gate)
+void drawGate(int x,int y, vector<pii> & gate)
 {
 	gate.resize(0);
-	setTextColor(14);
+	setTextColor(YELLOW);
 	gotoXY(x, y);
 	cout << (char)221;
 	gate.push_back(pii(x, y));
@@ -99,6 +99,7 @@ void drawGate(int x,int y, vector<pii> gate)
 	gotoXY(x + 2, y);
 	cout << (char)222;
 	gate.push_back(pii(x+2, y));
+	setTextColor(WHITE);
 }
 void drawSettingsBoard()
 {
@@ -131,16 +132,29 @@ void drawLeaderBoard() {
 		cout << (char)176;
 	}
 }
+void deleteGameScreen() {
+	for (int i = WALL_ABOVE + 1; i < WALL_BOTTOM; i++)
+		for (int j = WALL_LEFT + 1; j < WALL_RIGHT; j++) {
+			gotoXY(j, i);
+			cout << (char)255;
+		}
+}
 void announceGameOver(int score) {
 	int key;
 	key = inputKey();
 	//Level_1(wall);
 	setTextColor(11);
-	gotoXY(39, 11);
-	cout << "GAME OVER" << endl;
-	gotoXY(37, 12);
+	gotoXY(50, 25);
+	cout << R"(
+		  _______      ___      .___  ___.  _______      ______   ____    ____  _______ .______      
+		 /  _____|    /   \     |   \/   | |   ____|    /  __  \  \   \  /   / |   ____||   _  \     
+		|  |  __     /  ^  \    |  \  /  | |  |__      |  |  |  |  \   \/   /  |  |__   |  |_)  |    
+		|  | |_ |   /  /_\  \   |  |\/|  | |   __|     |  |  |  |   \      /   |   __|  |      /     
+		|  |__| |  /  _____  \  |  |  |  | |  |____    |  `--'  |    \    /    |  |____ |  |\  \----.
+		 \______| /__/     \__\ |__|  |__| |_______|    \______/      \__/     |_______|| _| `._____|)";
+	gotoXY(57, 32);
 	cout << "Your score: " << score;
-	gotoXY(37, 13);
+	gotoXY(57, 33);
 	cout << "Try again? (Y/N)";
 	/*if (key == KEY_Y)
 	{
@@ -151,4 +165,21 @@ void announceGameOver(int score) {
 		//return menu game
 	}*/
 	setTextColor(15);
+}
+
+void announceWin() {
+	int key;
+	key = inputKey();
+	//Level_1(wall);
+	setTextColor(11);
+	gotoXY(50, 25);
+	cout << R"(
+            ____    ____  ______    __    __   __.______       _______    ____    __    ____  __  .__   __.  __  
+            \   \  /   / /  __  \  |  |  |  | (_ )   _  \     |   ____|   \   \  /  \  /   / |  | |  \ |  | |  | 
+             \   \/   / |  |  |  | |  |  |  |  |/|  |_)  |    |  |__       \   \/    \/   /  |  | |   \|  | |  | 
+              \_    _/  |  |  |  | |  |  |  |    |      /     |   __|       \            /   |  | |  . `  | |  | 
+                |  |    |  `--'  | |  `--'  |    |  |\  \----.|  |____       \    /\    /    |  | |  |\   | |__| 
+                |__|     \______/   \______/     | _| `._____||_______|       \__/  \__/     |__| |__| \__| (__))";
+
+
 }

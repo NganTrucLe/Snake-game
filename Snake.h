@@ -30,22 +30,43 @@ private:
                 return 1;
         return 0;
     }
+    bool isTouchGate(const vector<pii> gate) {
+        int newX = position[0].first + changeX[direction];
+        int newY = position[0].second + changeY[direction];
+        for (pii i : gate) {
+            if (i == pii(newX, newY))return 1;
+        }
+        return 0;
+    }
 public:
-    int length;
-    int speed;
+    int length, speed;
     vector<pii> position;
     int direction;
+    vector<bool>appear;
+    int disappearing = -1, appearing = -1;
     Snake() {
+        appear.resize(0);
         length = 5;
+        speed = 200;
         srand(time(NULL));
-        direction = rand() % 4;
-        speed = 150;
-        position.push_back(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5));
+        for (int i = 0; i < length; i++)appear.push_back(1);
+        init(pii((WALL_LEFT + WALL_RIGHT) * 0.5, (WALL_ABOVE + WALL_BOTTOM) * 0.5), rand() % 4);
+    }
+    void init(pii location, int dir) {
+        direction = dir;
+        position.resize(0);
+        position.push_back(location);
         for (int i = 1; i < length; i++) {
             position.push_back(position.back());
             position[i].first -= changeX[direction];
             position[i].second -= changeY[direction];
         }
+    }
+    bool isNextLevel(const pii gate) {
+        int newX = position[0].first + changeX[direction];
+        int newY = position[0].second + changeY[direction];
+        if (pii(newX, newY) == gate)return 1;
+        return 0;
     }
     void restart() {
         position.resize(0);
@@ -64,9 +85,11 @@ public:
         int cnt = -1;
         for (pii i : position) {
             gotoXY(i.first, i.second);
-            if (i == *position.begin())
-                cout << (char)2;
-            else cout << MSSV[cnt];
+            if (appear[cnt + 1]) {
+                if (i == *position.begin())
+                    cout << (char)2;
+                else cout << MSSV[cnt];
+            }
             cnt++;
         }
     }
@@ -83,6 +106,7 @@ public:
     void addDot() {
         if (length == 25) return;
         position.push_back(position.back());
+        appear.push_back(1);
         for (int i = length - 1; i >= 1; i--) {
             position[i] = position[i - 1];
         }
@@ -113,8 +137,8 @@ public:
             return;
         direction = newDirection;
     }
-    bool isDeath(const vector<pii> wall) {
-        return isTouchBody() || isTouchWall(wall);
+    bool isDeath(const vector<pii> wall, const vector<pii> gate) {
+        return isTouchBody() || isTouchWall(wall) || isTouchGate(gate);
     }
     bool isEatFruit(pii fruit) {
         return position[0] == fruit;
