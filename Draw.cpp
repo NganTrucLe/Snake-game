@@ -141,12 +141,7 @@ void deleteGameScreen() {
 }
 void announceGameOver(int score) {
 	int key;
-	key = inputKey();
-
-	clrscr();
-	Level_1();
-	//Level_1(wall);
-  
+	key = inputKey();  
 	setTextColor(11);
 	gotoXY(50, 25);
 	cout << R"(
@@ -160,21 +155,12 @@ void announceGameOver(int score) {
 	cout << "Your score: " << score;
 	gotoXY(57, 33);
 	cout << "Try again? (Y/N)";
-	/*if (key == KEY_Y)
-	{
-		//continue the game with level 1
-	}
-	if (key == KEY_N)
-	{
-		//return menu game
-	}*/
 	setTextColor(15);
 }
 
 void announceWin() {
 	int key;
 	key = inputKey();
-	//Level_1(wall);
 	setTextColor(11);
 	gotoXY(50, 25);
 	cout << R"(

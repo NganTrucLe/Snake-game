@@ -149,7 +149,6 @@ private:
             }
             key = inputKey();
         }
-
     }
     void processWin() {
         announceWin();
