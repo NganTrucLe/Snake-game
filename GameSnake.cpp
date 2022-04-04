@@ -20,6 +20,7 @@ void Prepare();
 
 int main()
 {
+    
     Prepare();
     Game MyGame;
     MyGame.startNewGame();
@@ -32,4 +33,5 @@ void Prepare() {
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
+    DisableSelection();
 }

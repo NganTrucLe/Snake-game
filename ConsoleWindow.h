@@ -65,3 +65,6 @@ void resizeConsole(int width, int height);
 
 void noScrollbar();
 /*void fontsize(int a, int b);*/
+
+//Vô hiệu hóa bôi đen text
+void DisableSelection();
