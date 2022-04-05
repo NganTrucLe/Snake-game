@@ -26,4 +26,4 @@ void drawSettingsBoard();
 void drawLeaderBoard();
 void deleteGameScreen();
 void announceGameOver(int score);
-void announceWin();
+void announceWin(const int score, char *&saveName);

@@ -39,6 +39,9 @@
     <ClCompile Include="SaveAndLoad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Component.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleWindow.h">
@@ -59,9 +62,6 @@
     <ClInclude Include="Menu.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="MenuGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -72,6 +72,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="SaveAndLoad.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -33,5 +33,5 @@ void Prepare() {
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
-    DisableSelection();
+    //DisableSelection();
 }
