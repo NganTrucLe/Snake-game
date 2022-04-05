@@ -218,7 +218,7 @@ void leaderBoard()
                                         \/   \/     \/      \/    \/          \/           \/           \/ 
 
 )";
-    drawLeaderboard();
+    drawLeaderBoard();
     //ShowHighScore();
     gotoXY(52, 33);
     setTextColor(13);
@@ -230,31 +230,6 @@ void leaderBoard()
             return;
         }
     }
-}
-void drawLeaderboard()
-{
-    for (int x = WALL_LEFT + 1; x <= 120; x++)
-    {
-        gotoXY(x, WALL_ABOVE + 6);
-        cout << (char)240;
-    }
-   for (int x = WALL_LEFT + 1; x <= 120; x++)
-    {
-        gotoXY(x, WALL_BOTTOM + 8);
-        cout << (char)240;
-    }
-   for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-       gotoXY(WALL_LEFT + 1, y);
-       cout << (char)176;
-   }
-   for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-       gotoXY(WALL_RIGHT - 1, y);
-       cout << (char)176;
-   }
-   for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-       gotoXY(130, y);
-       cout << (char)176;
-   }
 }
 void exitGame()
 {
@@ -275,16 +250,6 @@ void exitGame()
 
 
 )";
-    /*gotoXY(52, 33);
-    setTextColor(13);
-    cout << "Want to back to MENU? Press B";
-    while (1) {
-        int key = inputKey();
-        if (key == KEY_B) {
-            clrscr();
-            return;
-        }
-    }*/
     gotoXY(59, 20);
     setTextColor(11);
     cout << "Do you want to exit?" << endl;

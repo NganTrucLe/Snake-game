@@ -8,6 +8,7 @@
 #include "Snake.h"
 #include "Fruit.h"
 #include "GameLevel.h"
+#include "Component.h"
 
 #define LOADING         0
 #define MENU            1
@@ -217,8 +218,8 @@ private:
         {
             //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
             for (int i = 0; i < 2; i++)
-                Set[i] = 7;
-            Set[counter - 1] = 12;
+                Set[i] = WHITE_COLOR;
+            Set[counter - 1] = RED_COLOR;
 
             gotoXY(64, 22);
             setTextColor(Set[0]);
@@ -258,17 +259,6 @@ private:
                 clrscr();
                 return;
             }
-        }
-    }
-    void counterEvent(int& key, int& counter, const int num) {
-        key = inputKey(); // đồng bộ toàn chương trình, lấy hàm trong ConsoleWindow.h
-        if (key == KEY_DOWN) // đồng bộ toàn chương trình, lấy define 
-        {
-            counter = min(counter + 1, num);
-        }
-        if (key == KEY_UP)
-        {
-            counter = max(counter - 1, 1);
         }
     }
 };

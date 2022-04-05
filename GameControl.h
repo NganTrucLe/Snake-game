@@ -9,6 +9,8 @@
 #include "GameLevel.h"
 #include "MenuGame.h"
 #include "AudioandSound.h"
+#include "SaveAndLoad.h"
+#include "Component.h"
 
 #define NOT_IN_GAME     0
 #define IN_GAME         1
@@ -18,6 +20,11 @@
 #define NEXT_LEVEL      5
 #define INCREASE_LEVEL  6
 using namespace std;
+
+struct HIGHSCORE {
+    char* name = new char[10];
+    int score;
+};
 
 class Game {
     Snake MySnake;
@@ -51,7 +58,6 @@ public:
                 handleAfterGameOver();
                 break;
             case IN_GAME:
-                drawScore(score);
                 setTextColor(15);
                 snakeActivities();
                 increaseScore();
@@ -96,6 +102,7 @@ public:
         loadLevel(level);
         state = IN_GAME;
         score = 0;
+        gate.resize(0);
     }
     void startWholeGame() {
         state = MENU;
@@ -109,6 +116,7 @@ private:
             MyFruit.generateFruit();
             score += 10;
         }
+        drawScore(score);
     }
     void pauseGame() {
         int key = inputKey();
@@ -151,24 +159,51 @@ private:
         }
     }
     void processWin() {
-        announceWin();
-        int key = inputKey();
-        while (1) {
-            /*if (key == 121) {
-                startNewGame();
-                break;
+        HIGHSCORE NewScore;
+        char *name_=new char[10];
+        announceWin(score, name_);
+        NewScore.name = name_;
+        NewScore.score = score;
+        deleteGameScreen();
+        gotoXY(30, 10);
+        int Set[3] = { WHITE_COLOR, WHITE_COLOR, WHITE_COLOR }; // Màu mặc định
+        int counter = 1, key;
+        char menuList[3][20] = { "1. Back to menu", "2. Restart", "3. Exit game"};
+        int positionY[3] = { 10,12,14 };
+        while (1)
+        {
+            counterEvent(key, counter, 3);
+            //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
+            for (int i = 0; i < 3; i++) Set[i] = WHITE_COLOR;
+            Set[counter - 1] = RED_COLOR;
+            for (int i = 0; i < 3; i++) {
+                gotoXY(36, positionY[i]);
+                setTextColor(Set[i]);
+                cout << menuList[i];
+                gotoXY(32, positionY[i]);
+                if (counter - 1 != i) cout << (char)255;
             }
-            else if (key == 110) {
-                state = MENU;
-                clrscr();
-                MyMenu.restart();
-                break;
+            gotoXY(32, positionY[counter - 1]);
+            setTextColor(RED_COLOR);
+            cout << (char)16;
+            if (key == ENTER)//Người dùng nhấn phím enter
+            {
+                switch (counter) {
+                case 1:
+                    state = MENU;
+                    clrscr();
+                    MyMenu.restart();
+                    break;
+                case 2:
+                    startNewGame();
+                    break;
+                case 3:
+                    exit(0);
+                    break;
+                }
+                return;
             }
-            key = inputKey();*/
         }
-    }
-    void restart() {
-
     }
     void loadLevel(int n) {
         switch (n) {

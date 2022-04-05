@@ -5,31 +5,31 @@
 
 #define BLACK_COLOR			0
 #define DARK_BLUE_COLOR		1
-#define DARK_GREEN_COLOR		2
+#define DARK_GREEN_COLOR	2
 #define DARK_CYAN_COLOR		3
 #define DARK_RED_COLOR		4
 #define DARK_PINK_COLOR		5
 #define DARK_YELLOW_COLOR	6
-#define DARK_WHITE_COLOR		7
+#define DARK_WHITE_COLOR	7
 #define GREY_COLOR			8
 #define BLUE_COLOR			9
 #define GREEN_COLOR			10
 #define CYAN_COLOR			11
 #define RED_COLOR			12
 #define PINK_COLOR			13
-#define YELLOW_COLOR			14
+#define YELLOW_COLOR		14
 #define WHITE_COLOR			15
 
-#define KEY_UP		1072
+#define KEY_UP			1072
 #define KEY_DOWN		1080
 #define KEY_LEFT		1077
-#define KEY_RIGHT	1075
+#define KEY_RIGHT		1075
 #define KEY_NONE		-1
-#define SPACE_BAR	32
-#define ENTER		13
-#define ESCAPE		27
-#define KEY_B		98
-#define KEY_P		112
+#define SPACE_BAR		32
+#define ENTER			13
+#define ESCAPE			27
+#define KEY_B			98
+#define KEY_P			112
 
 #define pii pair<int, int>
 

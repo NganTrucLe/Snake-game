@@ -140,6 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AudioandSound.cpp" />
+    <ClCompile Include="Component.cpp" />
     <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="Fruit.cpp" />
@@ -150,10 +151,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioandSound.h" />
+    <ClInclude Include="Component.h" />
     <ClInclude Include="ConsoleWindow.h" />
     <ClInclude Include="Draw.h" />
     <ClInclude Include="Fruit.h" />
-    <ClInclude Include="Game.h" />
     <ClInclude Include="GameControl.h" />
     <ClInclude Include="GameLevel.h" />
     <ClInclude Include="Menu.h" />
@@ -162,14 +163,11 @@
     <ClInclude Include="Snake.h" />
   </ItemGroup>
   <ItemGroup>
-
     <Text Include="highscore.txt" />
-
     <Media Include="gameover.wav" />
     <Media Include="levelup.wav" />
     <Media Include="Opening.wav" />
     <Media Include="success.wav" />
-
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
