@@ -82,6 +82,9 @@
     <Text Include="highscore.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="username.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="success.wav">
