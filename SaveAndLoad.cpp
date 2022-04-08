@@ -1,8 +1,9 @@
-#include "SaveAndLoad.h"
+﻿#include "SaveAndLoad.h"
 #include "GameControl.h"
 
 HIGHSCORE HighScore[5];
 HIGHSCORE NewScore;
+
 
 bool CheckEmptyHighScoreFile()
 {
@@ -144,6 +145,138 @@ void ShowHighScore()
 	fi.close();
 }
 
-void SaveData() {
+bool IsExistedFileName(char FileName[])
+{
+	ifstream f_user("username.txt");
+	char tmp[40];
 
+	while (f_user >> tmp)
+		if (tmp == FileName)
+		{
+			f_user.close();
+			return true;
+		}
+	f_user.close();
+	return false;
+}
+
+bool IsValidFileName(char FileName[])
+{
+	for (int i = 0; i < 40; i++)
+		if (FileName[i] == '>' || FileName[i] == '<' || FileName[i] == ':'
+			|| FileName[i] == '"' || FileName[i] == '/' || FileName[i] == '\\'
+			|| FileName[i] == '|' || FileName[i] == '?' || FileName[i] == '*')
+			return false;
+	return true;
+}
+
+void SaveData() {
+	char FileName[40];
+	do
+	{
+		cin.getline(FileName,40);
+		if (IsExistedFileName(FileName))
+			cout << "File existed, re-type!";
+		if (!IsValidFileName(FileName))
+			cout << "Invalid char, re-type!";
+		if (strlen(FileName) > 40)
+			cout << "Too long, re-type!";
+
+		if (IsExistedFileName(FileName) || !IsValidFileName(FileName) || strlen(FileName) > 40)
+		{
+			for (int i = 0; i < 40; i++)
+				cout << " ";
+		}
+	} while (IsExistedFileName(FileName) || !IsValidFileName(FileName) || strlen(FileName) > 40);
+	//ofstream fo("dataofsnake.txt" + FileName[40]);
+
+	ofstream f_user;
+	f_user.open("username.txt", ios::app);
+	f_user << FileName << endl;
+	f_user.close();
+
+	/*fo << length << " " << score << endl;
+
+	for (int i = 0; i < length; i++)
+		fo << position[i].x << " " << position[i].y << endl;
+
+
+	fo << MyFruit.corX<<" "<< MyFruit.corY<< endl;
+
+	if (GATE_EXIST)                      //cổng xuất hiện ?
+		fo << a.x << " " << a.y << endl; //vị trí cổng ?
+	else
+		fo << -1 << " " << -1 << endl;
+
+	fo << speed << endl;
+
+	fo << state << endl;
+
+	fo<<level<<endl;
+
+	fo << MOVING << endl; //?
+
+	fo << CHAR_LOCK << endl; //?
+
+
+	fo.close();
+
+	strcpy(NewScore.name, FileName);
+	NewScore.score = score;
+
+	CreateNewHighScore();
+	SortHighScore();*/
+}
+void LoadData()
+{
+	char FileName[40];
+	do
+	{
+		cin.getline(FileName,40);
+		if (!IsExistedFileName(FileName))
+		{
+			cout << "Not existed user!";
+			for (int i = 0; i < 18; i++)
+				cout << " ";
+		}
+	} while (!IsExistedFileName(FileName));
+
+	/*for (int i = 0; i < length; i++)
+	{
+		GotoXY(position[i].x, position[i].y);
+		cout << " ";
+	}
+
+	ifstream fi("dataofsnake.txt" + FileName[40]);
+
+	fi >> length >> score;
+
+
+	for (int i = 0; i < length; i++)
+		fi >> position[i].x >> position[i].y;
+
+	GotoXY(MyFruit.corX, MyFruit.corY);
+
+	cout << " ";
+	fi >> fMyFruit.corX >> MyFruit.corY;
+
+	fi >> a.x >> a.y;
+	if (a.x != -1 && a.y != -1)
+	{
+		drawGate(a.x,a.y);
+	}
+
+
+	fi >> speed;
+
+	fi >> state;
+
+	fi >> level;
+
+	fi >> MOVING; //?
+
+	fi >> CHAR_LOCK; //?
+
+
+	fi.close();*/
 }
