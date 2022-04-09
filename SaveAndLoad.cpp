@@ -171,6 +171,9 @@ bool IsValidFileName(char FileName[])
 }
 
 void SaveData() {
+	Game MyGame;
+	Snake MySnake;
+	Fruit MyFruit;
 	char FileName[40];
 	do
 	{
@@ -188,47 +191,48 @@ void SaveData() {
 				cout << " ";
 		}
 	} while (IsExistedFileName(FileName) || !IsValidFileName(FileName) || strlen(FileName) > 40);
-	//ofstream fo("dataofsnake.txt" + FileName[40]);
+	ofstream fo("dataofsnake.txt" + FileName[40]);
 
 	ofstream f_user;
 	f_user.open("username.txt", ios::app);
 	f_user << FileName << endl;
 	f_user.close();
 
-	/*fo << length << " " << score << endl;
+	//fo << MySnake.length << " " << MyGame.score << endl;
 
-	for (int i = 0; i < length; i++)
-		fo << position[i].x << " " << position[i].y << endl;
+	for (int i = 0; i < MySnake.length; i++)
+		fo << MySnake.position[i].first<< " " << MySnake.position[i].second << endl;
 
+	fo << MySnake.speed << endl;
+
+	fo << MySnake.direction<<endl;
 
 	fo << MyFruit.corX<<" "<< MyFruit.corY<< endl;
 
-	if (GATE_EXIST)                      //cổng xuất hiện ?
-		fo << a.x << " " << a.y << endl; //vị trí cổng ?
+	/*if (GATE_EXIST)                      //cổng xuất hiện ?
+		fo << MyGame.gate_position[MyGame.level - 1].first << " " << MyGame.gate_position[MyGame.level - 1].second << " " << MyGame.gate << endl; //vị trí cổng ?
 	else
-		fo << -1 << " " << -1 << endl;
+		fo << -1 << " " << -1 << endl;*/
 
-	fo << speed << endl;
+	/*fo << MyGame.state << endl;
 
-	fo << state << endl;
-
-	fo<<level<<endl;
-
-	fo << MOVING << endl; //?
-
-	fo << CHAR_LOCK << endl; //?
+	fo<<MyGame.level<<endl;*/
 
 
 	fo.close();
 
 	strcpy(NewScore.name, FileName);
-	NewScore.score = score;
+	//NewScore.score = MyGame.score;
 
 	CreateNewHighScore();
-	SortHighScore();*/
+	SortHighScore();
 }
 void LoadData()
 {
+	Game MyGame;
+	Snake MySnake;
+	Fruit MyFruit;
+	vector<pii>gate;
 	char FileName[40];
 	do
 	{
@@ -241,42 +245,42 @@ void LoadData()
 		}
 	} while (!IsExistedFileName(FileName));
 
-	/*for (int i = 0; i < length; i++)
+	for (int i = 0; i < MySnake.length; i++)
 	{
-		GotoXY(position[i].x, position[i].y);
+		gotoXY(MySnake.position[i].first, MySnake.position[i].second);
 		cout << " ";
 	}
 
 	ifstream fi("dataofsnake.txt" + FileName[40]);
 
-	fi >> length >> score;
+	//fi >> MySnake.length >> MyGame.score;
 
 
-	for (int i = 0; i < length; i++)
-		fi >> position[i].x >> position[i].y;
+	for (int i = 0; i < MySnake.length; i++)
+		fi >> MySnake.position[i].first >> MySnake.position[i].second;
 
-	GotoXY(MyFruit.corX, MyFruit.corY);
+	fi >> MySnake.speed;
+
+	fi >> MySnake.direction;
+
+	gotoXY(MyFruit.corX, MyFruit.corY);
 
 	cout << " ";
-	fi >> fMyFruit.corX >> MyFruit.corY;
 
-	fi >> a.x >> a.y;
-	if (a.x != -1 && a.y != -1)
+	fi >> MyFruit.corX >> MyFruit.corY;
+
+	//fi >> a.x >> a.y;
+
+	/*if (a.x != -1 && a.y != -1)
 	{
-		drawGate(a.x,a.y);
-	}
+		drawGate(a.x,a.y,gate);
+	}*/
 
 
-	fi >> speed;
+	/*fi >> MyGame.state;
 
-	fi >> state;
-
-	fi >> level;
-
-	fi >> MOVING; //?
-
-	fi >> CHAR_LOCK; //?
+	fi >> MyGame.level;*/
 
 
-	fi.close();*/
+	fi.close();
 }

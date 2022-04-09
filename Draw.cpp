@@ -62,6 +62,7 @@ void drawScoreBoard()
 	setTextColor(3);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 13);
 	cout << "HIGHSCORE: ";
+
 }
 void drawKeyMove()
 {

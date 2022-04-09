@@ -20,7 +20,6 @@ void Prepare();
 
 int main()
 {
-    
     Prepare();
     Game MyGame;
     MyGame.startNewGame();
