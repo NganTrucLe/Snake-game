@@ -30,6 +30,7 @@
 #define ESCAPE			27
 #define KEY_B			98
 #define KEY_P			112
+#define KEY_A			97
 
 #define pii pair<int, int>
 

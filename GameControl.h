@@ -14,11 +14,10 @@
 
 #define NOT_IN_GAME     0
 #define IN_GAME         1
-#define PAUSE           2
-#define GAME_OVER       3
-#define MENU            4
-#define NEXT_LEVEL      5
-#define INCREASE_LEVEL  6
+#define GAME_OVER       2
+#define MENU            3
+#define NEXT_LEVEL      4
+#define INCREASE_LEVEL  5
 using namespace std;
 
 struct HIGHSCORE {
@@ -65,9 +64,6 @@ public:
                     state = GAME_OVER;
                 nextLevel();
                 break;
-            case PAUSE:
-                pauseGame();
-                break;
             case INCREASE_LEVEL:
                 increaseLevel();
                 break;
@@ -92,6 +88,9 @@ public:
         MySnake.move();
         int key = inputKey();
         MySnake.changeDirection(key);
+        if (key == SPACE_BAR) {
+            pauseGame();
+        }
     }
     void startNewGame() {
         clrscr();
@@ -108,7 +107,7 @@ public:
         state = MENU;
     }
 private:
-    const pii gate_position[5] = { pii(43,12),pii(80,10),pii(10,10),pii(43,12),pii(10,10) };
+    const pii gate_position[5] = { pii(43,12),pii(77,10),pii(10,10),pii(43,12),pii(10,10) };
     void increaseScore() {
         if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
             AudioUpScore();
@@ -119,14 +118,18 @@ private:
         drawScore(score);
     }
     void pauseGame() {
-        int key = inputKey();
-        if (key == SPACE_BAR) {
-            while (1) {
-                if (key == SPACE_BAR) {
-                    clrscr();
-                    loadLevel(level);
-                    state = IN_GAME;
-                }
+        deleteGameScreen();
+        gotoXY(30, 10);
+        cout << "Pause";
+        while (1) {
+            int key = inputKey();
+            if (key == SPACE_BAR) {
+                deleteGameScreen();
+                loadLevel(level);
+                MyFruit.printCurrent();
+                if (!gate.empty())
+                    drawGate(gate_position[level - 1].first, gate_position[level - 1].second, gate);
+                break;
             }
         }
     }

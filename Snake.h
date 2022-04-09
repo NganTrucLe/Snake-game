@@ -129,6 +129,9 @@ public:
         case KEY_LEFT:
             newDirection = LEFT;
             break;
+        case KEY_A:
+            newDirection = RIGHT;
+            break;
         case KEY_RIGHT:
             newDirection = RIGHT;
             break;
