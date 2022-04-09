@@ -1,4 +1,5 @@
 #include "SaveAndLoad.h"
+#include "GameControl.h"
 
 HIGHSCORE HighScore[5];
 HIGHSCORE NewScore;

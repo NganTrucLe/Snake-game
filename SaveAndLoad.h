@@ -5,10 +5,6 @@
 
 using namespace std;
 
-struct HIGHSCORE {
-	char name[40];
-	int score;
-};
 
 bool CheckEmptyHighScoreFile();
 void SaveHighScore();

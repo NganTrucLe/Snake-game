@@ -83,7 +83,9 @@ public:
     }
     void printSnake() {
         int cnt = -1;
+        int color = 1;
         for (pii i : position) {
+            setTextColor(color);
             gotoXY(i.first, i.second);
             if (appear[cnt + 1]) {
                 if (i == *position.begin())
@@ -91,6 +93,7 @@ public:
                 else cout << MSSV[cnt];
             }
             cnt++;
+            color = (color + 1) % 15 + 1;
         }
     }
     void move() {

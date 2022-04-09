@@ -31,4 +31,4 @@ void drawLevel3();
 void drawLevel4();
 void drawLevel5();
 void announceGameOver(int score);
-void announceWin();
+void announceWin(const int score, char *&saveName);

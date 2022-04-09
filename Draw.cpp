@@ -113,12 +113,12 @@ void drawSettingsBoard()
 	cout << "SAVE AND EXIT";
 }
 void drawLeaderBoard() {
-	for (int x = WALL_LEFT + 1; x <= 120; x++)
+	for (int x = WALL_LEFT + 1; x <= 125; x++)
 	{
 		gotoXY(x, WALL_ABOVE + 6);
 		cout << (char)240;
 	}
-	for (int x = WALL_LEFT + 1; x <= 120; x++)
+	for (int x = WALL_LEFT + 1; x <= 125; x++)
 	{
 		gotoXY(x, WALL_BOTTOM + 8);
 		cout << (char)240;
@@ -128,7 +128,7 @@ void drawLeaderBoard() {
 		cout << (char)176;
 	}
 	for (int y = WALL_ABOVE + 7; y < WALL_BOTTOM + 8; y++) {
-		gotoXY(WALL_RIGHT - 1, y);
+		gotoXY(125, y);
 		cout << (char)176;
 	}
 }
@@ -195,7 +195,7 @@ void drawLevel3()
 void drawLevel4()
 {
 	gotoXY(12, 23);
-	setTextColor(29);
+	setTextColor(43);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -245,7 +245,7 @@ void announceGameOver(int score) {
 	setTextColor(15);
 }
 
-void announceWin() {
+void announceWin(const int score, char *&saveName) {
 	int key;
 	key = inputKey();
 	setTextColor(11);
@@ -258,5 +258,13 @@ void announceWin() {
                 |  |    |  `--'  | |  `--'  |    |  |\  \----.|  |____       \    /\    /    |  | |  |\   | |__| 
                 |__|     \______/   \______/     | _| `._____||_______|       \__/  \__/     |__| |__| \__| (__))";
 
-
+	deleteGameScreen();
+	gotoXY(30, 8);
+	cout << "Your score: " << score;
+	gotoXY(30,10);
+	cout << "Enter your name: ";
+	char name[10] = {}, ch, cnt = 0;
+	cin.getline(name, 10);
+	gotoXY(32, 10);
+	saveName=name;
 }
