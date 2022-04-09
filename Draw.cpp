@@ -104,11 +104,9 @@ void drawGate(int x,int y, vector<pii> & gate)
 void drawSettingsBoard()
 {
 	setTextColor(11);
-	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 16);
-	cout << "SETTINGS";
 	setTextColor(8);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 18);
-	cout << "PAUSE";
+	cout << "PAUSE (SPACE_BAR)";
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 20);
 	cout << "SAVE AND EXIT";
 }

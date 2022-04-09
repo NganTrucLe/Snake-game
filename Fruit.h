@@ -28,6 +28,9 @@ class Fruit {
             gotoXY(corX, corY);
             cout << (char)255;
         }
+        void printCurrent() {
+            printFruit(corX, corY);
+        }
     private:
         void printFruit(int x, int y) {
             const int symbol[5] = {3, 4, 5, 6, 14};
