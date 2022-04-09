@@ -20,18 +20,19 @@ void Prepare();
 
 int main()
 {
-    
+
     Prepare();
     Game MyGame;
     MyGame.startNewGame();
     MyGame.gameControl();
+    
+    
 }
-
 void Prepare() {
     clrscr();
     resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
-    DisableSelection();
+  
 }

@@ -16,6 +16,7 @@
 #define EXIT_GAME       4
 #define NEW_GAME        5
 #define LOAD_GAME       6
+#define HOW_TO_PLAY     7
 
 using namespace std;
 
@@ -31,6 +32,8 @@ public:
             case LOADING:
                 title();
                 loadingBar();
+                snakeIcon();
+                borderMenu();
                 state = MENU;
                 break;
             case NEW_GAME:
@@ -48,10 +51,15 @@ public:
             case LEADER_BOARD:
                 leaderBoard();
                 break;
+            case HOW_TO_PLAY:
+                howToPlay();
+                break;
             case EXIT_GAME:
                 exitGame();
                 break;
+            
             }
+
         }
     }
     void restart() {
@@ -59,11 +67,48 @@ public:
         menuControl();
     }
 private:
+    void borderMenu()
+    {
+        gotoXY(55, 20);
+        cout << R"(
+                                                  ______________________________
+                                                 / \                             \.
+                                                |   |                            |.
+                                                 \_ |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |                            |.
+                                                    |   _________________________|___
+                                                    |  /                            /.
+                                                    \_/____________________________/.)";
+     }
     void title()
     {
         setTextColor(10);
-        gotoXY(0, 0);
-        cout << R"(    
+        gotoXY(5, 3);
+        cout << R"(
+     __    __   __    __  .__   __. .___________. __  .__   __.   _______         _______..__   __.      ___       __  ___  _______ 
+    |  |  |  | |  |  |  | |  \ |  | |           ||  | |  \ |  |  /  _____|       /       ||  \ |  |     /   \     |  |/  / |   ____|
+    |  |__|  | |  |  |  | |   \|  | `---|  |----`|  | |   \|  | |  |  __        |   (----`|   \|  |    /  ^  \    |  '  /  |  |__   
+    |   __   | |  |  |  | |  . `  |     |  |     |  | |  . `  | |  | |_ |        \   \    |  . `  |   /  /_\  \   |    <   |   __|  
+    |  |  |  | |  `--'  | |  |\   |     |  |     |  | |  |\   | |  |__| |    .----)   |   |  |\   |  /  _____  \  |  .  \  |  |____ 
+    |__|  |__|  \______/  |__| \__|     |__|     |__| |__| \__|  \______|    |_______/    |__| \__| /__/     \__\ |__|\__\ |_______|
+                                                                                                                                
+)";
+}
+    void snakeIcon()
+    {
+        gotoXY(30, 30);
+        setTextColor(14);
+        cout << R"(
 
 
 
@@ -71,38 +116,57 @@ private:
 
 
 
-    
-                                  ___ ___               __  .__                   _________              __           
-                                 /   |   \ __ __  _____/  |_|__| ____    ____    /   _____/ ____ _____  |  | __ ____  
-                                /    ~    \  |  \/    \   __\  |/    \  / ___\   \_____  \ /    \\__  \ |  |/ // __ \ 
-                                \    Y    /  |  /   |  \  | |  |   |  \/ /_/  >  /        \   |  \/ __ \|    <\  ___/ 
-                                 \___|_  /|____/|___|  /__| |__|___|  /\___  /  /_______  /___|  (____  /__|_ \\___  >
-                                       \/            \/             \//_____/           \/     \/     \/     \/    \/            
-    
+                                                                                           /^\/^\
+                                                                                         _|__|  O|
+                                                                                \/     /~     \_/ \
+                                                                                 \____|__________/  \
+                                                                                        \_______      \
+                                                                                                `\     \                 \
+                                                                                                  |     |                  \
+                                                                                                 /      /                    \
+                                                                                                /     /                       \\
+                                                                                              /      /                         \ \
+                                                                                             /     /                            \  \
+                                                                                           /     /             _----_            \   \
+                                                                                          /     /           _-~      ~-_         |   |
+                                                                                         (      (        _-~    _--_    ~-_     _/   |
+                                                                                          \      ~-____-~    _-~    ~-_    ~-_-~    /
+                                                                                            ~-_           _-~          ~-_       _-~
+                                                                                               ~--______-~                ~-___-~
+
+    )";
+    }
+    void flower()
+    {
+        gotoXY(10, 27);
+        //setTextColor(13);
+        cout << R"(
 
 
-                                 
-     
-                    
-                                            
-       
+                       wWWWw                 wWWWw              wWWWw                 wWWWw             wWWWw               
+                   vVVVv (___) wWWWw         (___)  vVVVv  vVVVv (___) wWWWw         (___)  vVVVv  vVVVv (___) wWWWw        
+                   (___)  ~Y~  (___)  vVVVv   ~Y~   (___)  (___)  ~Y~  (___)  vVVVv   ~Y~   (___)  (___)  ~Y~  (___)  vVVVv   
+                    ~Y~   \|    ~Y~   (___)    |/    ~Y~    ~Y~   \|    ~Y~   (___)    |/    ~Y~    ~Y~   \|    ~Y~   (___)       
+                    \|   \ |/   \| /  \~Y~/   \|    \ |/    \|   \ |/   \| /  \~Y~/   \|    \ |/    \|   \ |/   \| /  \~Y~/  
+                   \\|// \\|// \\|/// \\|//  \\|// \\\|/// \\|// \\|// \\|/// \\|//  \\|// \\\|/// \\|// \\|// \\|/// \\|//      
+
 )";
     }
     void menuOptions() {
         setTextColor(2);
         title();
-        int Set[] = { 7,7,7,7,7 }; // Màu mặc định
+        int Set[] = { 7,7,7,7,7,7 }; // Màu mặc định
         int counter = 1, key;
-        char menuList[5][20] = { "1. New game", "2. Continue", "3. Leaderboard", "4. Introduction", "5. Exit game"};
-        int positionY[5] = { 20,22,24,26,28 };
+        char menuList[6][20] = { "1. New game", "2. Continue", "3. Leaderboard", "4. Introduction", "5. How to play", "6. Exit game"};
+        int positionY[6] = { 20,22,24,26,28,30};
         while (1)
         {
-            counterEvent(key, counter, 5);
+            counterEvent(key, counter, 6);
             //Đổi màu options, option counter thì có màu đỏ, còn lại trắng
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 6; i++)
                 Set[i] = 7;
             Set[counter - 1] = 12;
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < 6; i++) {
                 gotoXY(59, positionY[i]);
                 setTextColor(Set[i]);
                 cout << menuList[i];
@@ -112,7 +176,7 @@ private:
             gotoXY(55, positionY[counter - 1]);
             setTextColor(12);
             cout << (char)16;
-            const int newState[5] = { NEW_GAME, LOAD_GAME, LEADER_BOARD, INTRODUCTION, EXIT_GAME };
+            const int newState[6] = { NEW_GAME, LOAD_GAME, LEADER_BOARD, INTRODUCTION, HOW_TO_PLAY, EXIT_GAME };
             if (key == ENTER)//Người dùng nhấn phím enter
             {
                 state = newState[counter - 1];
@@ -121,21 +185,59 @@ private:
         }
     }
     void loadingBar() {
-        cout << "\n\n\n";
-        cout << "\t\t\t\t\tLoading ";
-        char x = 219;
-        for (int i = 0; i < 37; i++)
-        {
-            cout << x;
-            if (i < 10)
-                Sleep(300);
-            if (i >= 10 && i < 20)
-                Sleep(150);
-            if (i >= 10)
-                Sleep(25);
+        flower();
+        gotoXY(40, 15);
+        cout << "LOADING...";
+        gotoXY(60, 12);
+        cout << "A PROJECT BY GROUP 5";
+
+        int level = 13; 
+
+        
+        for (int x = 55; x < 85; x++) { // 2 horizontal lines 
+            gotoXY(x, 14);
+            cout << char(205);
+            gotoXY(x, 16);
+            cout << char(205);
+        }
+        
+        for (int y = 15; y < 16; y++) { //2 vertical lines
+            gotoXY(55, y);
+            cout << char(186);
+            gotoXY(85, y);
+            cout << char(186);
+        }
+
+
+        //top left
+        gotoXY(55, 14);
+        cout << (char)201;
+        //top right
+        gotoXY(85, 14);
+        cout << (char)187;
+        //bottom left
+        gotoXY(55, 16);
+        cout << (char)200;
+        //bottom right
+        gotoXY(85, 16);
+        cout << (char)188;
+
+
+        //bar internal content
+        for (int load = 56; load <= 84; load++) {
+            gotoXY(load, 15);
+            cout << char(178); 
+            Sleep(100); 
+
+            
+            level += 3; 
+            gotoXY(88, 15);
+            cout << level << "%"; 
+
         }
         system("cls");
         clrscr();
+
     }
     // Menu screens 
     void introduction() {
@@ -245,6 +347,99 @@ private:
 
             }
         }
+    }
+    void border()
+    {
+        cout << R"(
+                /|  /|  ---------------------------
+                ||__||  |                         |
+               /   O O\__    You want to play?    |
+              /          \      Let's play!       |
+             /      \     \                       |
+            /   _    \     \ ----------------------
+           /    |\____\     \      ||
+          /     | | | |\____/      ||
+         /       \| | | |/ |     __||
+        /  /  \   -------  |_____| ||
+       /   |   |           |       --|
+       |   |   |           |_____  --|
+       |  |_|_|_|          |     \----
+       /\                  |
+      / /\        |        /
+     / /  |       |       |
+ ___/ /   |       |       |
+|____/    c_c_c_C/ \C_c_c_c
+)";
+    }
+    void drawKeyBoard()
+    {               
+        gotoXY(57, 22);
+        cout << "LEFT";
+        gotoXY(71, 22);
+        cout << "RIGHT";
+        gotoXY(66, 20);
+        cout << "UP";
+        gotoXY(65, 24);
+        cout << "DOWN";
+        gotoXY(63, 22);
+        cout << (char)17;
+        gotoXY(69, 22);
+        cout << (char)16;
+        gotoXY(66, 21);
+        cout << (char)30;
+        gotoXY(66, 23);
+        cout << (char)31;
+        gotoXY(79, 22);
+        cout << "OR";
+        gotoXY(83, 22);
+        cout << "A";
+        gotoXY(95, 22);
+        cout << "D";
+        gotoXY(89, 20);
+        cout << "W";
+        gotoXY(89, 24);
+        cout << "S";
+    }
+                             
+
+    void howToPlay()
+    {
+        clrscr();
+        cout << R"(
+
+
+
+
+
+
+
+
+
+                                      ___ ___                   __                  .__                
+                                     /   |   \  ______  _  __ _/  |_  ____   ______ |  | _____  ___.__.
+                                    /    ~    \/  _ \ \/ \/ / \   __\/  _ \  \____ \|  | \__  \<   |  |
+                                    \    Y    (  <_> )     /   |  | (  <_> ) |  |_> >  |__/ __ \\___  |
+                                     \___|_  / \____/ \/\_/    |__|  \____/  |   __/|____(____  / ____|
+                                           \/                                |__|             \/\/     
+)";
+        gotoXY(57, 17);
+        cout << "WELCOME TO HUNTING SNAKE";
+        gotoXY(52, 19);
+        setTextColor(14);
+        cout << "How to move: ";
+        drawKeyBoard();
+        border();
+        gotoXY(52, 19);
+        cout << "Eat 5 fruits to pass to the next level.";
+        gotoXY(52, 21);
+        cout << "Go through the gate to move to next level!";
+        gotoXY(52, 23);
+        cout << "Avoid touching wall, gate, and yourself!";
+        gotoXY(52, 25);
+        cout << "Finally, enjoy the game!";
+        backButton(52, 33);
+        
+
     }
     // Components
     void backButton(int x, int y) {
