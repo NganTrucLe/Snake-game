@@ -6,6 +6,7 @@ void Level_1(vector<pii>& wallChallenge)
 	setTextColor(1);
 	drawWall();
 	drawScoreBoard();
+	drawLevel1();
 }
 void Level_2(vector<pii>& wallChallenge)
 {
@@ -13,6 +14,7 @@ void Level_2(vector<pii>& wallChallenge)
 	setTextColor(10);
 	drawWall();
 	drawScoreBoard();
+	drawLevel2();
 	setTextColor(10);
 	for (int x = 15; x <= 70; x++)
 	{
@@ -27,6 +29,7 @@ void Level_3(vector<pii>& wallChallenge)
 	setTextColor(13);
 	drawWall();
 	drawScoreBoard();
+	drawLevel3();
 	setTextColor(13);
 	for (int y = WALL_ABOVE + 1; y < 15; y++)
 	{
@@ -47,6 +50,7 @@ void Level_4(vector<pii>& wallChallenge)
 	setTextColor(12);
 	drawWall();
 	drawScoreBoard();
+	drawLevel4();
 	setTextColor(12);
 	for (int y = WALL_ABOVE + 1; y < 8; y++) {
 		gotoXY( 50 , y);
@@ -75,6 +79,7 @@ void Level_5(vector<pii> & wallChallenge)
 	setTextColor(14);
 	drawWall();
 	drawScoreBoard();
+	drawLevel5();
 	setTextColor(14);
 	for (int x = 17; x < 37; x++)
 	{

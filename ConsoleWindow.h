@@ -20,17 +20,24 @@
 #define YELLOW_COLOR		14
 #define WHITE_COLOR			15
 
-#define KEY_UP			1072
+#define KEY_UP		1072
 #define KEY_DOWN		1080
 #define KEY_LEFT		1077
-#define KEY_RIGHT		1075
+#define KEY_RIGHT	1075
 #define KEY_NONE		-1
-#define SPACE_BAR		32
-#define ENTER			13
-#define ESCAPE			27
-#define KEY_B			98
-#define KEY_P			112
-#define KEY_A			97
+#define SPACE_BAR	32
+#define ENTER		13
+#define ESCAPE		27
+#define KEY_B		98
+#define KEY_P		112
+#define KEY_A       65
+#define KEY_S		83
+#define KEY_D		68
+#define KEY_W		87
+#define KEY_a		97
+#define KEY_d		100
+#define KEY_w		119
+#define KEY_s		115
 
 #define pii pair<int, int>
 

@@ -148,9 +148,3 @@ void noScrollbar() {
 }*/
 
 //Vô hiệu hóa bôi đen text
-void DisableSelection()
-{
-	HANDLE hStdin = GetStdHandle(STD_INPUT_HANDLE);
-
-	SetConsoleMode(hStdin, ~ENABLE_QUICK_EDIT_MODE);
-}

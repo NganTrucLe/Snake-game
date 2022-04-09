@@ -24,19 +24,20 @@ int main()
     Game MyGame;
     MyGame.startNewGame();
     MyGame.gameControl();
+
     /*while (1) {
         int key = inputKey();
         cout << key << endl;
         Sleep(500);
     }*/
+
     
 }
-
 void Prepare() {
     clrscr();
     resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
-    //DisableSelection();
+  
 }

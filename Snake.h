@@ -135,6 +135,30 @@ public:
         case KEY_RIGHT:
             newDirection = RIGHT;
             break;
+        case KEY_A:
+            newDirection = RIGHT;
+            break;
+        case KEY_W:
+            newDirection = UP;
+            break;
+        case KEY_S:
+            newDirection = DOWN;
+            break;
+        case KEY_D:
+            newDirection = LEFT;
+            break;
+        case KEY_a:
+            newDirection = RIGHT;
+            break;
+        case KEY_w:
+            newDirection = UP;
+            break;
+        case KEY_s:
+            newDirection = DOWN;
+            break;
+        case KEY_d:
+            newDirection = LEFT;
+            break;
         default:
             newDirection = -1;
             break;
