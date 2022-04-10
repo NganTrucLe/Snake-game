@@ -1,19 +1,19 @@
 #include "GameLevel.h"
 
-void Level_1(vector<pii>& wallChallenge)
+void Level_1(vector<pii>& wallChallenge, int highScore)
 {
 	wallChallenge.resize(0);
 	setTextColor(1);
 	drawWall();
-	drawScoreBoard();
+	drawScoreBoard(highScore);
 	drawLevel1();
 }
-void Level_2(vector<pii>& wallChallenge)
+void Level_2(vector<pii>& wallChallenge, int highScore)
 {
 	wallChallenge.resize(0);
 	setTextColor(10);
 	drawWall();
-	drawScoreBoard();
+	drawScoreBoard(highScore);
 	drawLevel2();
 	setTextColor(10);
 	for (int x = 15; x <= 70; x++)
@@ -23,12 +23,12 @@ void Level_2(vector<pii>& wallChallenge)
 		wallChallenge.push_back(pii(x, 11));
 	}
 }
-void Level_3(vector<pii>& wallChallenge)
+void Level_3(vector<pii>& wallChallenge, int highScore)
 {
 	wallChallenge.resize(0);
 	setTextColor(13);
 	drawWall();
-	drawScoreBoard();
+	drawScoreBoard(highScore);
 	drawLevel3();
 	setTextColor(13);
 	for (int y = WALL_ABOVE + 1; y < 15; y++)
@@ -44,12 +44,12 @@ void Level_3(vector<pii>& wallChallenge)
 		wallChallenge.push_back(pii(57, y));
 	}
 }
-void Level_4(vector<pii>& wallChallenge)
+void Level_4(vector<pii>& wallChallenge, int highScore)
 {
 	wallChallenge.resize(0);
 	setTextColor(12);
 	drawWall();
-	drawScoreBoard();
+	drawScoreBoard(highScore);
 	drawLevel4();
 	setTextColor(12);
 	for (int y = WALL_ABOVE + 1; y < 8; y++) {
@@ -73,12 +73,12 @@ void Level_4(vector<pii>& wallChallenge)
 		wallChallenge.push_back(pii(35, y));
 	}
 }
-void Level_5(vector<pii> & wallChallenge)
+void Level_5(vector<pii> & wallChallenge, int highScore)
 {
 	wallChallenge.resize(0);
 	setTextColor(14);
 	drawWall();
-	drawScoreBoard();
+	drawScoreBoard(highScore);
 	drawLevel5();
 	setTextColor(14);
 	for (int x = 17; x < 37; x++)

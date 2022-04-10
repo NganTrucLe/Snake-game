@@ -47,7 +47,7 @@ void drawWallAroundScoreBoard()
 		cout << (char)219;
 	}
 }
-void drawScoreBoard()
+void drawScoreBoard(int highscore)
 {
 	drawWallAroundScoreBoard();
 	drawSettingsBoard();
@@ -61,7 +61,7 @@ void drawScoreBoard()
 	drawKeyMove();
 	setTextColor(3);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 13);
-	cout << "HIGHSCORE: ";
+	cout << "HIGHSCORE: " << highscore;
 
 }
 void drawKeyMove()
@@ -141,7 +141,7 @@ void deleteGameScreen() {
 void drawLevel1()
 {
 	gotoXY(12, 23);
-	setTextColor(46);
+	setTextColor(WHITE_COLOR);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -160,7 +160,7 @@ void drawLevel1()
 void drawLevel2()
 {
 	gotoXY(12, 23);
-	setTextColor(30);
+	setTextColor(WHITE_COLOR);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -177,7 +177,7 @@ void drawLevel2()
 void drawLevel3()
 {
 	gotoXY(12, 23);
-	setTextColor(47);
+	setTextColor(WHITE_COLOR);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -194,7 +194,7 @@ void drawLevel3()
 void drawLevel4()
 {
 	gotoXY(12, 23);
-	setTextColor(43);
+	setTextColor(WHITE_COLOR);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -211,7 +211,7 @@ void drawLevel4()
 void drawLevel5()
 {
 	gotoXY(12, 23);
-	setTextColor(26);
+	setTextColor(WHITE_COLOR);
 	cout << R"(
  .----------------.  .----------------.  .----------------.  .----------------.  .----------------.   .----------------. 
 | .--------------. || .--------------. || .--------------. || .--------------. || .--------------. | | .--------------. |
@@ -243,7 +243,6 @@ void announceGameOver(int score) {
 	cout << "Try again? (Y/N)";
 	setTextColor(15);
 }
-
 void announceWin(const int score, char *&saveName) {
 	int key;
 	key = inputKey();

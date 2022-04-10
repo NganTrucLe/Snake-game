@@ -9,7 +9,6 @@
 #include "GameLevel.h"
 #include "MenuGame.h"
 #include "AudioandSound.h"
-#include "SaveAndLoad.h"
 #include "Component.h"
 
 #define NOT_IN_GAME     0
@@ -19,11 +18,6 @@
 #define NEXT_LEVEL      4
 #define INCREASE_LEVEL  5
 using namespace std;
-
-struct HIGHSCORE {
-    char* name = new char[10];
-    int score;
-};
 
 class Game {
     Snake MySnake;
@@ -38,6 +32,7 @@ public:
         score = 0;
         state = IN_GAME;
         level = 1;
+        saveHighScore();
         MyMenu.restart();
     }
     void gameControl() {
@@ -104,6 +99,7 @@ public:
         gate.resize(0);
     }
     void startWholeGame() {
+        clrscr();
         state = MENU;
     }
 private:
@@ -161,12 +157,15 @@ private:
             key = inputKey();
         }
     }
-    void processWin() {
-        HIGHSCORE NewScore;
+    void handleAfterWin() {
+        time_t now = time(0);
+        char* dt = ctime(&now);
+        NewScore.time = dt;
         char *name_=new char[10];
         announceWin(score, name_);
         NewScore.name = name_;
         NewScore.score = score;
+        CreateNewHighScore(HighScore, NewScore);
         deleteGameScreen();
         gotoXY(30, 10);
         int Set[3] = { WHITE_COLOR, WHITE_COLOR, WHITE_COLOR }; // Màu mặc định
@@ -211,27 +210,27 @@ private:
     void loadLevel(int n) {
         switch (n) {
         case 1:
-            Level_1(wall);
+            Level_1(wall, HighScore[0].score);
             break;
         case 2:
-            Level_2(wall);
+            Level_2(wall, HighScore[0].score);
             break;
         case 3:
-            Level_3(wall);
+            Level_3(wall, HighScore[0].score);
             break;
         case 4:
-            Level_4(wall);
+            Level_4(wall, HighScore[0].score);
             break;
         case 5:
-            Level_5(wall);
+            Level_5(wall, HighScore[0].score);
             break;
         }
         MySnake.speed = speedLevel[n-1];
     }
     void nextLevel()
     {
-        if (score == 5 * 10) {
-            processWin();
+        if (score == 1 * 10) {
+            handleAfterWin();
         }
         if (score == 10*level)
         {
@@ -263,5 +262,11 @@ private:
         MySnake.init(nextLevelPosition, 3);
         MySnake.appearing = 0;
         state = IN_GAME;
+    }
+// ________________________________________________________________________________________________
+    HIGHSCORE HighScore[5];
+    HIGHSCORE NewScore;
+    void saveHighScore() {
+        InitializeHighScore(HighScore);
     }
 };

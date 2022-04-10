@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <vector>
 #include <conio.h>
+#include <ctime>
 #include <Windows.h>
 #include "ConsoleWindow.h"
 #include "Draw.h"
@@ -20,6 +21,14 @@ void Prepare();
 int main()
 {
     Prepare();
+
+        //// current date/time based on current system
+        //time_t now = time(0);
+
+        //// convert now to string form
+        //char* dt = ctime(&now);
+
+        //cout << "The local date and time is: " << dt << endl;
     Game MyGame;
     MyGame.startNewGame();
     MyGame.gameControl();
