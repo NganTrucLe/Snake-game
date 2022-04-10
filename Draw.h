@@ -17,7 +17,7 @@
 using namespace std;
 
 void drawWall(); 
-void drawScoreBoard();
+void drawScoreBoard(int highscore);
 void drawScore(int score);
 void drawKeyMove();
 void drawGate(int x,int y, vector<pii>& gate);

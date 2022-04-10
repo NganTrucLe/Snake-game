@@ -9,6 +9,7 @@
 #include "Fruit.h"
 #include "GameLevel.h"
 #include "Component.h"
+#include "SaveAndLoad.h"
 
 #define LOADING         0
 #define MENU            1
@@ -24,6 +25,7 @@ using namespace std;
 class Menu {
 public:
     int state;
+    HIGHSCORE HighScore[5];
     Menu() {
         state = LOADING;
     }
@@ -289,6 +291,17 @@ private:
 
 )";
         drawLeaderBoard();
+        InitializeHighScore(HighScore);
+        for (int i = 0; i < 5; i++) {
+            gotoXY(10, 10 + i);
+            cout << "No. " << i + 1;
+            gotoXY(20, 10 + i);
+            cout << HighScore[i].name;
+            gotoXY(50, 10 + i);
+            cout << HighScore[i].score;
+            gotoXY(70, 10 + i);
+            cout << HighScore[i].time;
+        }
         backButton(52, 33);
     }
     void exitGame() {
