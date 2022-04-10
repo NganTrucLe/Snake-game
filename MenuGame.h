@@ -66,6 +66,7 @@ public:
         }
     }
     void restart() {
+        clrscr();
         state = LOADING;
         menuControl();
     }
