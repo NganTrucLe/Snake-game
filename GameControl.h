@@ -43,8 +43,7 @@ public:
                 MyMenu.menuControl();
                 if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
-                    loadLevel(level);
-                    MyFruit.generateFruit();
+                    startNewGame();
                 }
                 break;
             case GAME_OVER:
@@ -55,9 +54,9 @@ public:
                 setTextColor(15);
                 snakeActivities();
                 increaseScore();
+                nextLevel();
                 if (gameOver())
                     state = GAME_OVER;
-                nextLevel();
                 break;
             case INCREASE_LEVEL:
                 increaseLevel();
@@ -85,6 +84,9 @@ public:
         MySnake.changeDirection(key);
         if (key == SPACE_BAR) {
             pauseGame();
+        }
+        else if (key == ESCAPE) {
+            saveGame();
         }
     }
     void startNewGame() {
@@ -141,6 +143,9 @@ private:
                 break;
             }
         }
+    }
+    void saveGame() {
+
     }
     void loadGame() {
 
@@ -242,7 +247,7 @@ private:
     }
     void nextLevel()
     {
-        if (score == 1 * 10) {
+        if (score == 5 * 10) {
             handleAfterWin();
         }
         if (score == 10*level)
@@ -268,6 +273,7 @@ private:
         MySnake.disappearing = -1;
         deleteGameScreen();
         level++;
+        AudioNewLevel();
         loadLevel(level);
         drawGate(gate_position[level - 1].first, gate_position[level - 1].second, gate);
         nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;

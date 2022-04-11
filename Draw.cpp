@@ -53,7 +53,7 @@ void drawScoreBoard(int highscore)
 	drawSettingsBoard();
 	/*fontsize(30, 30);*/
 	setTextColor(11);
-	gotoXY(WALL_RIGHT + 16, WALL_ABOVE+1);
+	gotoXY(WALL_RIGHT + 12, WALL_ABOVE + 2);
 	cout << "SCOREBOARD"; 
 	setTextColor(6);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE+6);
@@ -105,11 +105,13 @@ void drawGate(int x,int y, vector<pii> & gate)
 void drawSettingsBoard()
 {
 	setTextColor(11);
+	gotoXY(WALL_RIGHT + 12, 17);
+	cout << "SETTINGS";
 	setTextColor(8);
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 18);
 	cout << "PAUSE (SPACE_BAR)";
 	gotoXY(WALL_RIGHT + 5, WALL_ABOVE + 20);
-	cout << "SAVE AND EXIT";
+	cout << "SAVE AND EXIT (ESC)";
 }
 void drawLeaderBoard() {
 	//duong ngang o tren
@@ -175,7 +177,11 @@ void deleteGameScreen() {
 			cout << (char)255;
 		}
 }
-
+void deleteAnnounceArea() {
+	gotoXY(0, 24);
+	for (int i = 0; i < 1500; i++)
+		cout << (char)255;
+}
 void drawLevel1()
 {
 	gotoXY(15, 23);
@@ -252,8 +258,7 @@ void drawLevel5()
 	  `--------` `'-..-'     `---`      `'-..-'    `--------`         `...__..'   )";
 }
 void announceGameOver(int score) {
-	int key;
-	key = inputKey();  
+	deleteAnnounceArea();
 	setTextColor(11);
 	gotoXY(50, 25);
 	cout << R"(
@@ -263,36 +268,24 @@ void announceGameOver(int score) {
 		|  | |_ |   /  /_\  \   |  |\/|  | |   __|     |  |  |  |   \      /   |   __|  |      /     
 		|  |__| |  /  _____  \  |  |  |  | |  |____    |  `--'  |    \    /    |  |____ |  |\  \----.
 		 \______| /__/     \__\ |__|  |__| |_______|    \______/      \__/     |_______|| _| `._____|)";
-	gotoXY(57, 32);
+	deleteGameScreen();
+	gotoXY(30, 8);
 	cout << "Your score: " << score;
-	gotoXY(57, 33);
+	gotoXY(30, 10);
 	cout << "Try again? (Y/N)";
 	setTextColor(15);
 }
 void announceWin(const int score, char *&saveName) {
-	clrscr();
-	int key;
-	key = inputKey();
+	deleteAnnounceArea();
 	setTextColor(11);
-	gotoXY(25, 25);
+	gotoXY(50, 25);
 	cout << R"(
-
-
-
-						____    ____  ______    __    __   __.______       _______    ____    __    ____  __  .__   __.  __  
-						\   \  /   / /  __  \  |  |  |  | (_ )   _  \     |   ____|   \   \  /  \  /   / |  | |  \ |  | |  | 
-						 \   \/   / |  |  |  | |  |  |  |  |/|  |_)  |    |  |__       \   \/    \/   /  |  | |   \|  | |  | 
-						  \_    _/  |  |  |  | |  |  |  |    |      /     |   __|       \            /   |  | |  . `  | |  | 
-							|  |    |  `--'  | |  `--'  |    |  |\  \----.|  |____       \    /\    /    |  | |  |\   | |__| 
-							|__|     \______/   \______/     | _| `._____||_______|       \__/  \__/     |__| |__| \__| (__)
-
-
-
-
-)";
-
-
-
+            ____    ____  ______    __    __   __.______       _______    ____    __    ____  __  .__   __.  __  
+            \   \  /   / /  __  \  |  |  |  | (_ )   _  \     |   ____|   \   \  /  \  /   / |  | |  \ |  | |  | 
+             \   \/   / |  |  |  | |  |  |  |  |/|  |_)  |    |  |__       \   \/    \/   /  |  | |   \|  | |  | 
+              \_    _/  |  |  |  | |  |  |  |    |      /     |   __|       \            /   |  | |  . `  | |  | 
+                |  |    |  `--'  | |  `--'  |    |  |\  \----.|  |____       \    /\    /    |  | |  |\   | |__| 
+                |__|     \______/   \______/     | _| `._____||_______|       \__/  \__/     |__| |__| \__| (__))";
 	deleteGameScreen();
 	gotoXY(30, 8);
 	cout << "Your score: " << score;

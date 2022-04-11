@@ -25,6 +25,7 @@ void drawWallAroundScoreBoard();
 void drawSettingsBoard();
 void drawLeaderBoard();
 void deleteGameScreen();
+void deleteAnnounceArea();
 void drawLevel1();
 void drawLevel2();
 void drawLevel3();
