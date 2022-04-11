@@ -20,19 +20,22 @@ class Fruit {
         void generateFruit() {
             corX = WALL_LEFT + rand() % rangeX + 1;
             corY = WALL_ABOVE + rand() % rangeY + 1;
-            setTextColor(1 + rand() % 14);
             printFruit(corX,corY);
-            setTextColor(15);
         }
         void deleteFruit() {
             gotoXY(corX, corY);
             cout << (char)255;
         }
+        void printCurrent() {
+            printFruit(corX, corY);
+        }
     private:
         void printFruit(int x, int y) {
             const int symbol[5] = {3, 4, 5, 6, 14};
             gotoXY(x, y);
+            setTextColor(1 + rand() % 14);
             cout << (char) symbol[rand() % 5];
+            setTextColor(15);
         }
     
 };
