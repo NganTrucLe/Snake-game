@@ -115,8 +115,21 @@ private:
     }
     void pauseGame() {
         deleteGameScreen();
-        gotoXY(30, 10);
-        cout << "Pause";
+        gotoXY(23, 10);
+        cout << " _______  _______  __   __  _______  _______" << endl;
+        gotoXY(23, 11);
+        cout << "|       ||   _   ||  | |  ||       ||       |" << endl;
+        gotoXY(23, 12);
+        cout << "|    _  ||  |_|  ||  | |  ||  _____||    ___|" << endl;
+        gotoXY(23, 13);
+        cout << "|   |_| ||       ||  |_|  || |_____ |   |___   " << endl;
+        gotoXY(23, 14);
+        cout << "|    ___||       ||       ||_____  ||    ___|  " << endl;
+        gotoXY(23, 15);
+        cout << "|   |    |   _   ||       | _____| ||   |___ " << endl;
+        gotoXY(23, 16);
+        cout << "|___|    |__| |__||_______||_______||_______|";
+
         while (1) {
             int key = inputKey();
             if (key == SPACE_BAR) {

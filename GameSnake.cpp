@@ -43,7 +43,7 @@ int main()
 }
 void Prepare() {
     clrscr();
-    resizeConsole(1050,600);
+    resizeConsole(1000,600);
     fixConsoleWindow();
     noCursorType();
     noScrollbar();
