@@ -166,6 +166,7 @@
     <Media Include="levelup.wav" />
     <Media Include="Opening.wav" />
     <Media Include="success.wav" />
+    <Text Include="Truc.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
