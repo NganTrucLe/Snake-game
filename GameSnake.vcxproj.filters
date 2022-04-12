@@ -76,7 +76,7 @@
     <Text Include="highscore.txt">
       <Filter>Source Files</Filter>
     </Text>
-    <Text Include="username.txt">
+    <Text Include="Truc.txt">
       <Filter>Source Files</Filter>
     </Text>
   </ItemGroup>

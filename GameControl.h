@@ -15,7 +15,7 @@
 #define IN_GAME         1
 #define GAME_OVER       2
 #define MENU            3
-#define NEXT_LEVEL      4
+#define LOAD_GAME       4
 #define INCREASE_LEVEL  5
 using namespace std;
 
@@ -34,16 +34,20 @@ public:
         level = 1;
         saveHighScore();
         MyMenu.restart();
+        state = MENU;
     }
     void gameControl() {
         loadLevel(level);
         while (1) {
             switch (state) {
             case MENU:
-                MyMenu.menuControl();
+                //MyMenu.menuControl();
                 if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
                     startNewGame();
+                }
+                else if (MyMenu.state == 6) {
+                    state = LOAD_GAME;
                 }
                 break;
             case GAME_OVER:
@@ -60,6 +64,9 @@ public:
                 break;
             case INCREASE_LEVEL:
                 increaseLevel();
+                break;
+            case LOAD_GAME:
+                loadGame();
                 break;
             }
 
@@ -86,7 +93,9 @@ public:
             pauseGame();
         }
         else if (key == ESCAPE) {
+            deleteGameScreen();
             saveGame();
+            exit(0);
         }
     }
     void startNewGame() {
@@ -99,10 +108,7 @@ public:
         state = IN_GAME;
         score = 0;
         gate.resize(0);
-    }
-    void startWholeGame() {
-        clrscr();
-        state = MENU;
+        gameControl();
     }
 private:
     const pii gate_position[5] = { pii(43,12),pii(77,10),pii(10,10),pii(43,12),pii(10,10) };
@@ -145,10 +151,40 @@ private:
         }
     }
     void saveGame() {
-
+        gotoXY(30, 10);
+        cout << "Enter your name: ";
+        char filename[44] = {}, ch, cnt = 0;
+        cin.getline(filename, 10);
+        int n = strlen(filename);
+        filename[n] = '.';
+        filename[n + 1] = 't';
+        filename[n + 2] = 'x';
+        filename[n + 3] = 't';
+        fstream output_fstream;
+        output_fstream.open(filename, std::ios_base::out);
+        saveDataGame(filename, level, score, gate);
+        saveDataSnake(filename, MySnake.position, MySnake.appear, MySnake.direction);
     }
     void loadGame() {
-
+        clrscr();
+        gotoXY(30, 10);
+        cout << "Enter your name: ";
+        char filename[44] = {}, ch, cnt = 0;
+        cin.getline(filename, 10);
+        int n = strlen(filename);
+        filename[n] = '.';
+        filename[n + 1] = 't';
+        filename[n + 2] = 'x';
+        filename[n + 3] = 't';
+        loadDataGame(filename, level, score, gate, MySnake.position, MySnake.appear, MySnake.direction);
+        state = IN_GAME;
+        deleteGameScreen();
+        MySnake.length = MySnake.position.size();
+        loadLevel(level);
+        if (gate.size() != 0) {
+            nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;
+            nextLevelPosition.second = gate[0].second;
+        }
     }
     bool gameOver() {
         if (MySnake.isDeath(wall, gate)) {

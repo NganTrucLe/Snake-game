@@ -42,6 +42,7 @@ public:
                 return;
                 break;
             case LOAD_GAME:
+                return;
                 break;
             case MENU:
                 menuOptions();
