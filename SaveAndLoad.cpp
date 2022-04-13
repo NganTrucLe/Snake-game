@@ -139,10 +139,12 @@ void saveDataSnake(char FileName[], vector<pii>position, vector<bool>appear, con
 		fo << i.first << " " << i.second << " " << appear[cnt++] << endl;
 	}
 }
-void saveDataFruit(const pii position) {
-	cout << position.first << " " << position.second;
+void saveDataFruit(char FileName[], pii position) {
+	ofstream fo;
+	fo.open(FileName, fstream::app);
+	fo << position.first << " " << position.second << endl;
 }
-void loadDataGame(char FileName[], int& level, int& score, vector<pii>& gate, vector<pii>& position, vector<bool>& appear, int& direction) {
+void loadDataGame(char FileName[], int& level, int& score, vector<pii>& gate, vector<pii>& position, vector<bool>& appear, int& direction, pii& fruit) {
 	ifstream fi;
 	fi.open(FileName);
 	fi >> level;
@@ -154,6 +156,9 @@ void loadDataGame(char FileName[], int& level, int& score, vector<pii>& gate, ve
 		int x, y;
 		fi >> x >> y;
 		gate.push_back(pii(x, y));
+	}
+	if (gate.size() == 0) {
+		fi >> fruit.first >> fruit.second;
 	}
 	fi >> direction;
 	int n;

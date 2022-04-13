@@ -113,7 +113,7 @@ public:
 private:
     const pii gate_position[5] = { pii(43,12),pii(77,10),pii(10,10),pii(43,12),pii(10,10) };
     void increaseScore() {
-        if (MySnake.isEatFruit(pii(MyFruit.corX, MyFruit.corY))) {
+        if (MySnake.isEatFruit(MyFruit.cor)) {
             AudioUpScore();
             MySnake.addDot();
             MyFruit.generateFruit();
@@ -163,6 +163,7 @@ private:
         fstream output_fstream;
         output_fstream.open(filename, std::ios_base::out);
         saveDataGame(filename, level, score, gate);
+        if (gate.size() == 0) saveDataFruit(filename, MyFruit.cor);
         saveDataSnake(filename, MySnake.position, MySnake.appear, MySnake.direction);
     }
     void loadGame() {
@@ -176,7 +177,7 @@ private:
         filename[n + 1] = 't';
         filename[n + 2] = 'x';
         filename[n + 3] = 't';
-        loadDataGame(filename, level, score, gate, MySnake.position, MySnake.appear, MySnake.direction);
+        loadDataGame(filename, level, score, gate, MySnake.position, MySnake.appear, MySnake.direction, MyFruit.cor);
         state = IN_GAME;
         deleteGameScreen();
         MySnake.length = MySnake.position.size();
@@ -185,6 +186,7 @@ private:
             nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;
             nextLevelPosition.second = gate[0].second;
         }
+        else MyFruit.printCurrent();
     }
     bool gameOver() {
         if (MySnake.isDeath(wall, gate)) {
