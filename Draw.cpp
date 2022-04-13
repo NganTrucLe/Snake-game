@@ -1,5 +1,20 @@
 ﻿#include "Draw.h"
+void drawSand()
+{
+	for (int i = WALL_LEFT; i < WALL_RIGHT; i++)
+	{
+		for (int j = WALL_ABOVE; j < WALL_BOTTOM; j++)
+		{
+			UINT old_cp = GetConsoleOutputCP();
+			SetConsoleOutputCP(CP_UTF8);
+			gotoXY(i, j);
+			setTextColor(6);
+			cout << u8"█";
+			SetConsoleOutputCP(old_cp);
 
+		}
+	}
+}
 void drawWall() {
 	for (int x = WALL_LEFT; x <= WALL_RIGHT; x++) {
 		gotoXY(x, WALL_ABOVE);
@@ -184,90 +199,130 @@ void deleteAnnounceArea() {
 }
 void drawLevel1()
 {
-	gotoXY(15, 23);
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
 	setTextColor(12);
-	cout << R"(
-	  .---.       .-''-.  ,---.  ,---.   .-''-.    .---.                ,---.  
-	  | ,_|     .'_ _   \ |   /  |   | .'_ _   \   | ,_|               /_   |  
-	,-./  )    / ( ` )   '|  |   |  .'/ ( ` )   ',-./  )                 ,_ |  
-	\  '_ '`) . (_ o _)  ||  | _ |  |. (_ o _)  |\  '_ '`)           ,-./  )|  
-	 > (_)  ) |  (_,_)___||  _( )_  ||  (_,_)___| > (_)  )           \  '_ '`) 
-	(  .  .-' '  \   .---.\ (_ o._) /'  \   .---.(  .  .-'            > (_)  ) 
-	 `-'`-'|___\  `-'    / \ (_,_) /  \  `-'    / `-'`-'|___         (  .  .-' 
-	  |        \\       /   \     /    \       /   |        \         `-'`-'|  
-	  `--------` `'-..-'     `---`      `'-..-'    `--------`           '---'  )";
+	cout << u8"██      ███████ ██    ██ ███████ ██           ██ ";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██      ██      ██    ██ ██      ██          ███ ";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██      █████   ██    ██ █████   ██           ██ ";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██      ██       ██  ██  ██      ██           ██ ";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"███████ ███████   ████   ███████ ███████      ██ ";
+	SetConsoleOutputCP(old_cp);
 }
 void drawLevel2()
 {
-	gotoXY(15, 23);
-	setTextColor(10);
-	cout << R"(
-	  .---.       .-''-.  ,---.  ,---.   .-''-.    .---.                 .`````-.   
-	  | ,_|     .'_ _   \ |   /  |   | .'_ _   \   | ,_|                /   ,-.  \  
-	,-./  )    / ( ` )   '|  |   |  .'/ ( ` )   ',-./  )               (___/  |   | 
-	\  '_ '`) . (_ o _)  ||  | _ |  |. (_ o _)  |\  '_ '`)                   .'  /  
-	 > (_)  ) |  (_,_)___||  _( )_  ||  (_,_)___| > (_)  )               _.-'_.-'   
-	(  .  .-' '  \   .---.\ (_ o._) /'  \   .---.(  .  .-'             _/_  .'      
-	 `-'`-'|___\  `-'    / \ (_,_) /  \  `-'    / `-'`-'|___          ( ' )(__..--. 
-	  |        \\       /   \     /    \       /   |        \        (_{;}_)      | 
-	  `--------` `'-..-'     `---`      `'-..-'    `--------`         (_,_)-------' )";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8"██      ███████ ██    ██ ███████ ██          ██████  ";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██      ██      ██    ██ ██      ██               ██ ";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██      █████   ██    ██ █████   ██           █████  ";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██      ██       ██  ██  ██      ██          ██      ";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"███████ ███████   ████   ███████ ███████     ███████ ";
+	SetConsoleOutputCP(old_cp);
 }
 void drawLevel3()
 {
-	gotoXY(12, 23);
-	setTextColor(14);
-	cout << R"(
-	  .---.       .-''-.  ,---.  ,---.   .-''-.    .---.                .-'''-.    
-	  | ,_|     .'_ _   \ |   /  |   | .'_ _   \   | ,_|               /   _   \   
-	,-./  )    / ( ` )   '|  |   |  .'/ ( ` )   ',-./  )              |__/` '.  |  
-	\  '_ '`) . (_ o _)  ||  | _ |  |. (_ o _)  |\  '_ '`)               .--'  /   
-	 > (_)  ) |  (_,_)___||  _( )_  ||  (_,_)___| > (_)  )            ___'--._ _\  
-	(  .  .-' '  \   .---.\ (_ o._) /'  \   .---.(  .  .-'           |   |  ( ` )  
-	 `-'`-'|___\  `-'    / \ (_,_) /  \  `-'    / `-'`-'|___         |   `-(_{;}_) 
-	  |        \\       /   \     /    \       /   |        \         \     (_,_)  
-	  `--------` `'-..-'     `---`      `'-..-'    `--------`          `-..__.-'   )";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8"██      ███████ ██    ██ ███████ ██          ██████";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██      ██      ██    ██ ██      ██               ██ ";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██      █████   ██    ██ █████   ██           █████";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██      ██       ██  ██  ██      ██               ██ ";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"███████ ███████   ████   ███████ ███████     ██████ ";
+	SetConsoleOutputCP(old_cp);
 }
 void drawLevel4()
 {
-	gotoXY(12, 23);
-	setTextColor(13);
-	cout << R"(
-	  .---.       .-''-.  ,---.  ,---.   .-''-.    .---.                   ,---.   
-	  | ,_|     .'_ _   \ |   /  |   | .'_ _   \   | ,_|                  /,--.|   
-	,-./  )    / ( ` )   '|  |   |  .'/ ( ` )   ',-./  )                 //_  ||   
-	\  '_ '`) . (_ o _)  ||  | _ |  |. (_ o _)  |\  '_ '`)              /_( )_||   
-	 > (_)  ) |  (_,_)___||  _( )_  ||  (_,_)___| > (_)  )             /(_ o _)|   
-	(  .  .-' '  \   .---.\ (_ o._) /'  \   .---.(  .  .-'            / /(_,_)||_  
-	 `-'`-'|___\  `-'    / \ (_,_) /  \  `-'    / `-'`-'|___         /  `-----' || 
-	  |        \\       /   \     /    \       /   |        \        `-------|||-' 
-	  `--------` `'-..-'     `---`      `'-..-'    `--------`                '-'   )";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8"██      ███████ ██    ██ ███████ ██          ██   ██";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██      ██      ██    ██ ██      ██          ██   ██";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██      █████   ██    ██ █████   ██          ███████ ";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██      ██       ██  ██  ██      ██               ██";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"███████ ███████   ████   ███████ ███████          ██";
+	SetConsoleOutputCP(old_cp);
 }
 void drawLevel5()
 {
-	gotoXY(12, 23);
-	setTextColor(11);
-	cout << R"(
-	  .---.       .-''-.  ,---.  ,---.   .-''-.    .---.             ,--------.   
-	  | ,_|     .'_ _   \ |   /  |   | .'_ _   \   | ,_|             |   _____|   
-	,-./  )    / ( ` )   '|  |   |  .'/ ( ` )   ',-./  )             |  )         
-	\  '_ '`) . (_ o _)  ||  | _ |  |. (_ o _)  |\  '_ '`)           |  '----.    
-	 > (_)  ) |  (_,_)___||  _( )_  ||  (_,_)___| > (_)  )           |_.._ _  '.  
-	(  .  .-' '  \   .---.\ (_ o._) /'  \   .---.(  .  .-'              ( ' )   \ 
-	 `-'`-'|___\  `-'    / \ (_,_) /  \  `-'    / `-'`-'|___          _(_{;}_)  | 
-	  |        \\       /   \     /    \       /   |        \        |  (_,_)  /  
-	  `--------` `'-..-'     `---`      `'-..-'    `--------`         `...__..'   )";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8"██      ███████ ██    ██ ███████ ██          ███████";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██      ██      ██    ██ ██      ██          ██     ";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██      █████   ██    ██ █████   ██          ███████";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██      ██       ██  ██  ██      ██               ██";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"███████ ███████   ████   ███████ ███████     ███████";
+	SetConsoleOutputCP(old_cp);
 }
 void announceGameOver(int score) {
 	deleteAnnounceArea();
 	setTextColor(11);
-	gotoXY(50, 25);
-	cout << R"(
-		  _______      ___      .___  ___.  _______      ______   ____    ____  _______ .______      
-		 /  _____|    /   \     |   \/   | |   ____|    /  __  \  \   \  /   / |   ____||   _  \     
-		|  |  __     /  ^  \    |  \  /  | |  |__      |  |  |  |  \   \/   /  |  |__   |  |_)  |    
-		|  | |_ |   /  /_\  \   |  |\/|  | |   __|     |  |  |  |   \      /   |   __|  |      /     
-		|  |__| |  /  _____  \  |  |  |  | |  |____    |  `--'  |    \    /    |  |____ |  |\  \----.
-		 \______| /__/     \__\ |__|  |__| |_______|    \______/      \__/     |_______|| _| `._____|)";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8" ██████   █████  ███    ███ ███████      ██████  ██    ██ ███████ ██████";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██       ██   ██ ████  ████ ██          ██    ██ ██    ██ ██      ██   ██";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"██   ███ ███████ ██ ████ ██ █████       ██    ██ ██    ██ █████   ██████";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██    ██ ██   ██ ██  ██  ██ ██          ██    ██  ██  ██  ██      ██   ██";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8" ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██ ";
+	SetConsoleOutputCP(old_cp);
 	deleteGameScreen();
 	gotoXY(30, 8);
 	cout << "Your score: " << score;
@@ -278,14 +333,24 @@ void announceGameOver(int score) {
 void announceWin(const int score, char *&saveName) {
 	deleteAnnounceArea();
 	setTextColor(11);
-	gotoXY(50, 25);
-	cout << R"(
-            ____    ____  ______    __    __   __.______       _______    ____    __    ____  __  .__   __.  __  
-            \   \  /   / /  __  \  |  |  |  | (_ )   _  \     |   ____|   \   \  /  \  /   / |  | |  \ |  | |  | 
-             \   \/   / |  |  |  | |  |  |  |  |/|  |_)  |    |  |__       \   \/    \/   /  |  | |   \|  | |  | 
-              \_    _/  |  |  |  | |  |  |  |    |      /     |   __|       \            /   |  | |  . `  | |  | 
-                |  |    |  `--'  | |  `--'  |    |  |\  \----.|  |____       \    /\    /    |  | |  |\   | |__| 
-                |__|     \______/   \______/     | _| `._____||_______|       \__/  \__/     |__| |__| \__| (__))";
+	UINT old_cp = GetConsoleOutputCP();
+	SetConsoleOutputCP(CP_UTF8);
+	gotoXY(15, 27);
+	setTextColor(12);
+	cout << u8"██    ██  ██████  ██    ██ ██████  ███████     ██     ██ ██ ███    ██";
+	gotoXY(15, 28);
+	setTextColor(12);
+	cout << u8"██  ██  ██    ██ ██    ██ ██   ██ ██          ██     ██ ██ ████   ██";
+	gotoXY(15, 29);
+	setTextColor(12);
+	cout << u8"████   ██    ██ ██    ██ ██████  █████       ██  █  ██ ██ ██ ██  ██";
+	gotoXY(15, 30);
+	setTextColor(12);
+	cout << u8"██    ██    ██ ██    ██ ██   ██ ██          ██ ███ ██ ██ ██  ██ ██";
+	gotoXY(15, 31);
+	setTextColor(12);
+	cout << u8"██     ██████   ██████  ██   ██ ███████      ███ ███  ██ ██   ████ ";
+	SetConsoleOutputCP(old_cp);
 	deleteGameScreen();
 	gotoXY(30, 8);
 	cout << "Your score: " << score;

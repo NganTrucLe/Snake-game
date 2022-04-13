@@ -100,6 +100,7 @@ public:
     }
     void startNewGame() {
         clrscr();
+        drawSand();
         level = 1;
         gotoXY(0, 0);
         MySnake.restart();
@@ -123,21 +124,27 @@ private:
     }
     void pauseGame() {
         deleteGameScreen();
+        UINT old_cp = GetConsoleOutputCP();
+        SetConsoleOutputCP(CP_UTF8);
         gotoXY(23, 10);
-        cout << " _______  _______  __   __  _______  _______" << endl;
+        setTextColor(11);
+        cout << u8"██████╗  █████╗ ██╗   ██╗███████╗███████╗";
         gotoXY(23, 11);
-        cout << "|       ||   _   ||  | |  ||       ||       |" << endl;
+        setTextColor(11);
+        cout << u8"██╔══██╗██╔══██╗██║   ██║██╔════╝██╔════╝";
         gotoXY(23, 12);
-        cout << "|    _  ||  |_|  ||  | |  ||  _____||    ___|" << endl;
+        setTextColor(11);
+        cout << u8"██████╔╝███████║██║   ██║███████╗█████╗";
         gotoXY(23, 13);
-        cout << "|   |_| ||       ||  |_|  || |_____ |   |___   " << endl;
+        setTextColor(11);
+        cout << u8"██╔═══╝ ██╔══██║██║   ██║╚════██║██╔══╝ ";
         gotoXY(23, 14);
-        cout << "|    ___||       ||       ||_____  ||    ___|  " << endl;
+        setTextColor(11);
+        cout << u8"██║     ██║  ██║╚██████╔╝███████║███████╗";
         gotoXY(23, 15);
-        cout << "|   |    |   _   ||       | _____| ||   |___ " << endl;
-        gotoXY(23, 16);
-        cout << "|___|    |__| |__||_______||_______||_______|";
-
+        setTextColor(11);
+        cout << u8"╚═╝     ╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚══════╝";
+        SetConsoleOutputCP(old_cp);
         while (1) {
             int key = inputKey();
             if (key == SPACE_BAR) {

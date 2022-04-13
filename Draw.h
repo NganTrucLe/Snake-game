@@ -15,7 +15,7 @@
 #define YELLOW	14
 
 using namespace std;
-
+void drawSand();
 void drawWall(); 
 void drawScoreBoard(int highscore);
 void drawScore(int score);
