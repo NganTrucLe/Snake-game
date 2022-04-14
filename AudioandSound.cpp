@@ -15,3 +15,7 @@ void AudioNewLevel()
 {
 	PlaySound(TEXT("success.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
+void AudioBanLaNhat()
+{
+	PlaySound(TEXT("banlanhat.wav"), NULL, SND_FILENAME | SND_ASYNC);
+}

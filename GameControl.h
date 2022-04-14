@@ -246,6 +246,7 @@ private:
         }
     }
     void handleAfterWin() {
+        AudioBanLaNhat();
         time_t now = time(0);
         char* dt = ctime(&now);
         NewScore.time = dt;
