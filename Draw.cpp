@@ -302,7 +302,7 @@ void drawLevel5()
 	cout << u8"███████ ███████   ████   ███████ ███████     ███████";
 	SetConsoleOutputCP(old_cp);
 }
-void announceGameOver(int score) {
+void announceGameOver(int score, char*& saveName) {
 	deleteAnnounceArea();
 	setTextColor(11);
 	UINT old_cp = GetConsoleOutputCP();
@@ -326,6 +326,13 @@ void announceGameOver(int score) {
 	deleteGameScreen();
 	gotoXY(30, 8);
 	cout << "Your score: " << score;
+	gotoXY(30, 10);
+	cout << "Enter your name: ";
+	char name[10] = {};
+	cin.getline(name, 10);
+	saveName = name;
+	gotoXY(32, 10);
+	deleteGameScreen();
 	gotoXY(30, 10);
 	cout << "Try again? (Y/N)";
 	setTextColor(15);
@@ -356,7 +363,7 @@ void announceWin(const int score, char *&saveName) {
 	cout << "Your score: " << score;
 	gotoXY(30,10);
 	cout << "Enter your name: ";
-	char name[10] = {}, ch, cnt = 0;
+	char name[10] = {};
 	cin.getline(name, 10);
 	gotoXY(32, 10);
 	saveName=name;

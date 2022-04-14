@@ -41,7 +41,6 @@ public:
         while (1) {
             switch (state) {
             case MENU:
-                //MyMenu.menuControl();
                 if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
                     startNewGame();
@@ -100,7 +99,6 @@ public:
     }
     void startNewGame() {
         clrscr();
-        drawSand();
         level = 1;
         gotoXY(0, 0);
         MySnake.restart();
@@ -158,10 +156,19 @@ private:
         }
     }
     void saveGame() {
-        gotoXY(30, 10);
-        cout << "Enter your name: ";
-        char filename[44] = {}, ch, cnt = 0;
-        cin.getline(filename, 10);
+        char filename[44] = {};
+        do {
+            deleteGameScreen();
+            gotoXY(30, 10);
+            cout << "Enter your name: ";
+            cin.getline(filename, 10);
+            if (IsValidFileName(filename)) break;
+            clrscr();
+            gotoXY(28, 10);
+            deleteGameScreen();
+            cout << "Invalid file name, re-enter!";
+            Sleep(2000);
+        } while (1);
         int n = strlen(filename);
         filename[n] = '.';
         filename[n + 1] = 't';
@@ -174,22 +181,33 @@ private:
         saveDataSnake(filename, MySnake.position, MySnake.appear, MySnake.direction);
     }
     void loadGame() {
-        clrscr();
-        gotoXY(30, 10);
-        cout << "Enter your name: ";
-        char filename[44] = {}, ch, cnt = 0;
-        cin.getline(filename, 10);
-        int n = strlen(filename);
-        filename[n] = '.';
-        filename[n + 1] = 't';
-        filename[n + 2] = 'x';
-        filename[n + 3] = 't';
+        char filename[44] = {};
+        do {
+            clrscr();
+            gotoXY(30, 10);
+            cout << "Enter your name: ";
+            cin.getline(filename, 10);
+            if (IsValidFileName(filename)) {
+                int n = strlen(filename);
+                filename[n] = '.';
+                filename[n + 1] = 't';
+                filename[n + 2] = 'x';
+                filename[n + 3] = 't';
+                if (IsExistedFileName(filename)) break;
+            }
+            clrscr();
+            gotoXY(28, 10);
+            AudioGameOver();
+            cout << "Invalid file name or non-existed file, re-enter!";
+            Sleep(2000);
+        } while (1);
         loadDataGame(filename, level, score, gate, MySnake.position, MySnake.appear, MySnake.direction, MyFruit.cor);
         state = IN_GAME;
         deleteGameScreen();
         MySnake.length = MySnake.position.size();
         loadLevel(level);
         if (gate.size() != 0) {
+            drawGate(gate_position[level - 1].first, gate_position[level - 1].second, gate);
             nextLevelPosition.first = (gate[0].first + gate.back().first) / 2;
             nextLevelPosition.second = gate[0].second;
         }
@@ -198,8 +216,15 @@ private:
     bool gameOver() {
         if (MySnake.isDeath(wall, gate)) {
             AudioGameOver();
-            MySnake.blink();
-            announceGameOver(score);
+            MySnake.blink(); 
+            time_t now = time(0);
+            char* dt = ctime(&now);
+            NewScore.time = dt;
+            char* name_ = new char[10];
+            announceGameOver(score, name_);
+            NewScore.score = score;
+            NewScore.name = name_;
+            CreateNewHighScore(HighScore, NewScore);
             return 1;
         }
         return 0;
@@ -328,7 +353,7 @@ private:
         state = IN_GAME;
     }
 // ________________________________________________________________________________________________
-    HIGHSCORE HighScore[5];
+    HIGHSCORE HighScore[19];
     HIGHSCORE NewScore;
     void saveHighScore() {
         InitializeHighScore(HighScore);
