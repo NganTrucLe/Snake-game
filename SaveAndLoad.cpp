@@ -18,21 +18,21 @@ bool CheckEmptyHighScoreFile()
 	return true;
 }
 
-void SaveHighScore(HIGHSCORE HighScore[5])
+void SaveHighScore(HIGHSCORE HighScore[19])
 {
 	ofstream fo;
 	fo.open("highscore.txt");
 
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < 18; i++)
 		fo << HighScore[i].name << " " << HighScore[i].score << endl << HighScore[i].time << endl;
-	fo << HighScore[4].name << " " << HighScore[4].score << endl << HighScore[4].time;
+	fo << HighScore[18].name << " " << HighScore[18].score << endl << HighScore[18].time;
 
 	fo.close();
 }
 
-void ResetHighScore(HIGHSCORE HighScore[5])
+void ResetHighScore(HIGHSCORE HighScore[19])
 {
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 19; i++)
 	{
 		strcpy(HighScore[i].name, "NONE");
 		HighScore[i].score = 0;
@@ -41,7 +41,7 @@ void ResetHighScore(HIGHSCORE HighScore[5])
 	SaveHighScore(HighScore);
 }
 
-void InitializeHighScore(HIGHSCORE HighScore[5])
+void InitializeHighScore(HIGHSCORE HighScore[19])
 {
 	if (!CheckEmptyHighScoreFile())
 	{
@@ -71,7 +71,7 @@ void InitializeHighScore(HIGHSCORE HighScore[5])
 		ResetHighScore(HighScore);
 }
 
-void CreateNewHighScore(HIGHSCORE HighScore[5], HIGHSCORE NewScore)
+void CreateNewHighScore(HIGHSCORE HighScore[19], HIGHSCORE NewScore)
 {
 	int minScore = HighScore[0].score;
 	int index = 0;
@@ -80,7 +80,7 @@ void CreateNewHighScore(HIGHSCORE HighScore[5], HIGHSCORE NewScore)
 	none[1] = 'O';
 	none[2] = 'N';
 	none[3] = 'E';
-	for (int i = 0; i < 5; i++)
+	for (int i = 0; i < 19; i++)
 	{
 		if (strcmp(HighScore[i].name,"NONE")==0)
 		{
@@ -102,10 +102,10 @@ void CreateNewHighScore(HIGHSCORE HighScore[5], HIGHSCORE NewScore)
 	}
 }
 
-void SortHighScore(HIGHSCORE HighScore[5])
+void SortHighScore(HIGHSCORE HighScore[19])
 {
-	for (int i = 0; i < 4; i++)
-		for (int j = i + 1; j < 5; j++)
+	for (int i = 0; i < 18; i++)
+		for (int j = i + 1; j < 19; j++)
 			if (HighScore[i].score < HighScore[j].score)
 			{
 				char name[40];
@@ -181,19 +181,12 @@ void loadDataFruit(char FileName[], pii& position) {
 }
 bool IsExistedFileName(char FileName[])
 {
-	ifstream f_user("username.txt");
-	char tmp[40];
-
-	while (f_user >> tmp)
-		if (tmp == FileName)
-		{
-			f_user.close();
-			return true;
-		}
-	f_user.close();
-	return false;
+	ifstream inputFile(FileName);
+	if (!inputFile.good()) {
+		return false;
+	}
+	return true;
 }
-
 bool IsValidFileName(char FileName[])
 {
 	for (int i = 0; i < 40; i++)

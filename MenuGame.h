@@ -25,7 +25,7 @@ using namespace std;
 class Menu {
 public:
     int state;
-    HIGHSCORE HighScore[5];
+    HIGHSCORE HighScore[19];
     Menu() {
         state = LOADING;
     }
@@ -34,7 +34,10 @@ public:
             switch (state) {
             case LOADING:
                 title();
-                //loadingBar();
+                if (!once) {
+                    loadingBar();
+                    once = 1;
+                }
                 state = MENU;
                 break;
             case NEW_GAME:
@@ -70,6 +73,7 @@ public:
         menuControl();
     }
 private:
+    bool once = 0;
     void borderMenu()
     {
         gotoXY(55, 20);
@@ -115,7 +119,6 @@ private:
     }
     void snakeIcon1()
     {
-        //gotoXY(30,15);
         setTextColor(14);
         cout << R"(         
 
@@ -131,7 +134,6 @@ _____________________________________________________/  /__/  /__/  /__/  /_____
     void flower()
     {
         gotoXY(10, 27);
-        //setTextColor(13);
         cout << R"(
 
 
@@ -238,20 +240,20 @@ _____________________________________________________/  /__/  /__/  /__/  /_____
     {
         gotoXY(0, 14);
         cout << R"(
-      ////^\\\\
-      | ^   ^ |
-     @ (o) (o) @
-      |   <   |
-      |  ___  |
-       \_____/
-     ____|  |____
-    /    \__/    \
-   /              \
-  /\_/|        |\_/\
- / /  |        |  \ \
-( <   |        |   > )
- \ \  |        |  / /
-  \ \ |________| / /
+          ////^\\\\
+          | ^   ^ |
+         @ (o) (o) @
+          |   <   |
+          |  ___  |
+           \_____/
+         ____|  |____
+        /    \__/    \
+       /              \
+      /\_/|        |\_/\
+     / /  |        |  \ \
+    ( <   |        |   > )
+     \ \  |        |  / /
+      \ \ |________| / /
    
 )";
     }
@@ -340,7 +342,7 @@ _____________________________________________________/  /__/  /__/  /__/  /_____
         SetConsoleOutputCP(old_cp);
         drawLeaderBoard();
         InitializeHighScore(HighScore);
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 19; i++) {
             gotoXY(16, 11 + i);
             cout << "No. " << i + 1;
             gotoXY(26, 11 + i);
