@@ -1,4 +1,5 @@
 ﻿#include "Draw.h"
+#include "SaveAndLoad.h"
 void drawSand()
 {
 	for (int i = WALL_LEFT; i < WALL_RIGHT; i++)
@@ -323,13 +324,20 @@ void announceGameOver(int score, char*& saveName) {
 	setTextColor(12);
 	cout << u8" ██████  ██   ██ ██      ██ ███████      ██████    ████   ███████ ██   ██ ";
 	SetConsoleOutputCP(old_cp);
-	deleteGameScreen();
-	gotoXY(30, 8);
-	cout << "Your score: " << score;
-	gotoXY(30, 10);
-	cout << "Enter your name: ";
 	char name[10] = {};
-	cin.getline(name, 10);
+	do {
+		deleteGameScreen();
+		gotoXY(30, 8);
+		cout << "Your score: " << score;
+		gotoXY(30, 10);
+		cout << "Enter your name: ";
+		cin.getline(name, 10);
+		if (IsValidFileName(name)) break;
+		deleteGameScreen();
+		gotoXY(28, 10);
+		cout << "Invalid file name, re-enter!";
+		Sleep(2000);
+	} while (1);
 	saveName = name;
 	gotoXY(32, 10);
 	deleteGameScreen();
@@ -358,13 +366,19 @@ void announceWin(const int score, char *&saveName) {
 	setTextColor(12);
 	cout << u8"██     ██████   ██████  ██   ██ ███████      ███ ███  ██ ██   ████ ";
 	SetConsoleOutputCP(old_cp);
-	deleteGameScreen();
-	gotoXY(30, 8);
-	cout << "Your score: " << score;
-	gotoXY(30,10);
-	cout << "Enter your name: ";
 	char name[10] = {};
-	cin.getline(name, 10);
-	gotoXY(32, 10);
+	do {
+		deleteGameScreen();
+		gotoXY(30, 8);
+		cout << "Your score: " << score;
+		gotoXY(30, 10);
+		cout << "Enter your name: ";
+		cin.getline(name, 10);
+		if (IsValidFileName(name)) break;
+		deleteGameScreen();
+		gotoXY(28, 10);
+		cout << "Invalid file name, re-enter!";
+		Sleep(2000);
+	} while (1);
 	saveName=name;
 }

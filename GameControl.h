@@ -163,9 +163,8 @@ private:
             cout << "Enter your name: ";
             cin.getline(filename, 10);
             if (IsValidFileName(filename)) break;
-            clrscr();
-            gotoXY(28, 10);
             deleteGameScreen();
+            gotoXY(28, 10);
             cout << "Invalid file name, re-enter!";
             Sleep(2000);
         } while (1);
