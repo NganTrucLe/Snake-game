@@ -10,6 +10,7 @@
 #include "GameLevel.h"
 #include "Component.h"
 #include "SaveAndLoad.h"
+#include "AudioandSound.h"
 
 #define LOADING         0
 #define MENU            1
@@ -35,6 +36,7 @@ public:
             case LOADING:
                 title();
                 if (!once) {
+                    AudioBanLaNhat();
                     loadingBar();
                     once = 1;
                 }
