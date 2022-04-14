@@ -41,7 +41,6 @@ public:
         while (1) {
             switch (state) {
             case MENU:
-                //MyMenu.menuControl();
                 if (MyMenu.state == NEW_GAME) {
                     state = IN_GAME;
                     startNewGame();
@@ -217,8 +216,15 @@ private:
     bool gameOver() {
         if (MySnake.isDeath(wall, gate)) {
             AudioGameOver();
-            MySnake.blink();
-            announceGameOver(score);
+            MySnake.blink(); 
+            time_t now = time(0);
+            char* dt = ctime(&now);
+            NewScore.time = dt;
+            char* name_ = new char[10];
+            announceGameOver(score, name_);
+            NewScore.score = score;
+            NewScore.name = name_;
+            CreateNewHighScore(HighScore, NewScore);
             return 1;
         }
         return 0;
