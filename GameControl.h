@@ -29,6 +29,7 @@ class Game {
     pii nextLevelPosition;
 public:
     Game() {
+        ResetHighScore(HighScore);
         score = 0;
         state = IN_GAME;
         level = 1;
@@ -317,10 +318,10 @@ private:
     }
     void nextLevel()
     {
-        if (score == 5 * 10) {
+        if (score == 5 * 30) {
             handleAfterWin();
         }
-        if (score == 10*level)
+        if (score == 30*level)
         {
             MyFruit.deleteFruit();
             drawGate(gate_position[level - 1].first, gate_position[level-1].second, gate);
