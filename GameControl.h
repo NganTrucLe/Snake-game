@@ -83,7 +83,7 @@ public:
                     cout << (char)255;
                 }
                 gate.resize(0);
-                MyFruit.generateFruit();
+                MyFruit.generateFruit(wall);
             }
         }
         MySnake.move();
@@ -103,7 +103,7 @@ public:
         level = 1;
         gotoXY(0, 0);
         MySnake.restart();
-        MyFruit.generateFruit();
+        MyFruit.generateFruit(wall);
         loadLevel(level);
         state = IN_GAME;
         score = 0;
@@ -116,7 +116,7 @@ private:
         if (MySnake.isEatFruit(MyFruit.cor)) {
             AudioUpScore();
             MySnake.addDot();
-            MyFruit.generateFruit();
+            MyFruit.generateFruit(wall);
             score += 10;
         }
         drawScore(score);
