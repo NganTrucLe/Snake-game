@@ -14,8 +14,8 @@ private:
     const int changeY[4] = { -1, 0, 0, 1 };
     const char bodyChar = 254;
     const char MSSV[24] = { '2','1','1','2','7','7','0','9',
-                            '2','1','1','2','7','6','0','5',
-                            '2','1','1','2','7','6','0','1' };
+                            '2','1','1','2','7','2','0','5',
+                            '2','1','1','2','7','6','2','1' };
     bool isTouchWall(const vector<pii> wall) {
         int newX = position[0].first + changeX[direction];
         int newY = position[0].second + changeY[direction];
