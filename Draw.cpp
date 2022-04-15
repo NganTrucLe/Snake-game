@@ -362,7 +362,7 @@ void announceGameOver(int score, char*& saveName) {
 		gotoXY(30, 10);
 		cout << "Enter your name: ";
 		cin.getline(name, 10);
-		if (IsValidFileName(name)) break;
+		if (isValidFileName(name)) break;
 		deleteGameScreen();
 		gotoXY(28, 10);
 		cout << "Invalid file name, re-enter!";

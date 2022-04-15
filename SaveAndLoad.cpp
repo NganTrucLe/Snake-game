@@ -1,24 +1,21 @@
 ﻿#include "SaveAndLoad.h"
 using namespace std;
-bool CheckEmptyHighScoreFile()
+bool checkEmptyHighScoreFile()
 {
 	ifstream fi;
-	//string name;
 	char name[40] = {};
 	int score;
-
 	fi.open("highscore.txt");
 	if (fi >> name >> score)
 	{
 		fi.close();
 		return false;
 	}
-
 	fi.close();
 	return true;
 }
 
-void SaveHighScore(HIGHSCORE HighScore[19])
+void saveHighScore(HIGHSCORE HighScore[19])
 {
 	ofstream fo;
 	fo.open("highscore.txt");
@@ -30,7 +27,7 @@ void SaveHighScore(HIGHSCORE HighScore[19])
 	fo.close();
 }
 
-void ResetHighScore(HIGHSCORE HighScore[19])
+void resetHighScore(HIGHSCORE HighScore[19])
 {
 	for (int i = 0; i < 19; i++)
 	{
@@ -38,14 +35,13 @@ void ResetHighScore(HIGHSCORE HighScore[19])
 		HighScore[i].score = 0;
 		strcpy(HighScore[i].time, "_");
 	}
-	SaveHighScore(HighScore);
+	saveHighScore(HighScore);
 }
 
-void InitializeHighScore(HIGHSCORE HighScore[19])
+void initializeHighScore(HIGHSCORE HighScore[19])
 {
-	if (!CheckEmptyHighScoreFile())
+	if (!checkEmptyHighScoreFile())
 	{
-		//string name;
 		char name[40] = {};
 		char time[30] = {};
 		int score;
@@ -54,7 +50,6 @@ void InitializeHighScore(HIGHSCORE HighScore[19])
 		fi.open("highscore.txt");
 
 		int i = 0;
-
 		while (fi >> name >> score)
 		{
 			strcpy(HighScore[i].name, name);
@@ -63,40 +58,37 @@ void InitializeHighScore(HIGHSCORE HighScore[19])
 			fi.getline(time, 30);
 			strcpy(HighScore[i].time, time);
 			i++;
-			if (i == 19)break;
+			if (i == 19) break;
 		}
-
 		fi.close();
 	}
-	else
-		ResetHighScore(HighScore);
+	else resetHighScore(HighScore);
 }
 
-void CreateNewHighScore(HIGHSCORE HighScore[19], HIGHSCORE NewScore)
+void createNewHighScore(HIGHSCORE HighScore[19], HIGHSCORE NewScore)
 {
-	int minScore = NewScore.score;
-	int index = 0;
+	int index = -1;
 	for (int i = 0; i < 19; i++)
 	{
-		if (strcmp(HighScore[i].name,"NONE")==0)
-		{
-			index = i;
-			break;
-		}
-		else if (HighScore[i].score < minScore)
+		if (strcmp(HighScore[i].name,"NONE") == 0 || HighScore[i].score < NewScore.score)
 		{
 			index = i;
 			break;
 		}
 	}
-	for (int j = 19; j > index; j--) {
-		HighScore[j] = HighScore[j - 1];
+	if (index == -1) return;
+	for (int j = 18; j > index; j--) {
+		strcpy(HighScore[j].name, HighScore[j - 1].name);
+		strcpy(HighScore[j].time, HighScore[j - 1].time);
+		HighScore[j].score = HighScore[j - 1].score;
 	}
-	HighScore[index] = NewScore;
-	SaveHighScore(HighScore);
+	strcpy(HighScore[index].name, NewScore.name);
+	strcpy(HighScore[index].time, NewScore.time);
+	HighScore[index].score = NewScore.score;
+	saveHighScore(HighScore);
 }
 
-void SortHighScore(HIGHSCORE HighScore[19])
+void sortHighScore(HIGHSCORE HighScore[19])
 {
 	for (int i = 0; i < 18; i++)
 		for (int j = i + 1; j < 19; j++)
@@ -111,7 +103,7 @@ void SortHighScore(HIGHSCORE HighScore[19])
 				HighScore[i].score = HighScore[j].score;
 				HighScore[j].score = score;
 			}
-	SaveHighScore(HighScore);
+	saveHighScore(HighScore);
 }
 void saveDataGame(char FileName[], const int level, const int score, vector<pii> gate) {
 	ofstream fo;
@@ -173,7 +165,7 @@ void loadDataFruit(char FileName[], pii& position) {
 	fi.open(FileName);
 	fi >> position.first >> position.second;
 }
-bool IsExistedFileName(char FileName[])
+bool isExistedFileName(char FileName[])
 {
 	ifstream inputFile(FileName);
 	if (!inputFile.good()) {
@@ -181,7 +173,7 @@ bool IsExistedFileName(char FileName[])
 	}
 	return true;
 }
-bool IsValidFileName(char FileName[])
+bool isValidFileName(char FileName[])
 {
 	for (int i = 0; i < 40; i++)
 		if (FileName[i] == '>' || FileName[i] == '<' || FileName[i] == ':'

@@ -5,7 +5,7 @@
 using namespace std;
 
 void PlayOpeningSound();
-void AudioUpScore();
-void AudioGameOver();
-void AudioNewLevel();
-void AudioBanLaNhat();
+void audioUpScore();
+void audioGameOver();
+void audioNewLevel();
+void audioBanLaNhat();

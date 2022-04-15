@@ -144,9 +144,12 @@
     <ClCompile Include="ConsoleWindow.cpp" />
     <ClCompile Include="Draw.cpp" />
     <ClCompile Include="Fruit.cpp" />
+    <ClCompile Include="GameControl.cpp" />
     <ClCompile Include="GameLevel.cpp" />
     <ClCompile Include="GameSnake.cpp" />
+    <ClCompile Include="MenuGame.cpp" />
     <ClCompile Include="SaveAndLoad.cpp" />
+    <ClCompile Include="Snake.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AudioandSound.h" />

@@ -1,21 +1,21 @@
-#include "AudioandSound.h"
-void PlayOpeningSound()
+#include "audioandSound.h"
+void playOpeningSound()
 {
 	PlaySound(TEXT("Opening.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
-void AudioUpScore()
+void audioUpScore()
 {
 	PlaySound(TEXT("levelup.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
-void AudioGameOver()
+void audioGameOver()
 {
 	PlaySound(TEXT("gameover.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
-void AudioNewLevel()
+void audioNewLevel()
 {
 	PlaySound(TEXT("success.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
-void AudioBanLaNhat()
+void audioBanLaNhat()
 {
 	PlaySound(TEXT("winning.wav"), NULL, SND_FILENAME | SND_ASYNC);
 }
