@@ -1,40 +1,38 @@
-DuongKhan 30
-Fri Apr 15 13:01:27 2022
-Kistkatt 10
-Fri Apr 15 12:59:25 2022
-MCK 10
-Fri Apr 15 12:45:30 2022
-dd 10
-Fri Apr 15 12:59:25 2022
-Truc 10
-Fri Apr 15 12:33:09 2022
-hlh 10
-Fri Apr 15 12:48:10 2022
-jhkh 10
-Fri Apr 15 12:36:16 2022
-jhkh 10
-Fri Apr 15 12:36:16 2022
-asdkfjas 10
-Fri Apr 15 12:54:05 2022
-лллллллллллллллллллллллллллллллл(КоУ└ 10
-Fri Apr 15 13:58:52 2022
-
-hihi 10
-Fri Apr 15 13:58:52 2022
-
-panda 0
-Fri Apr 15 12:37:30 2022
-panda 0
-Fri Apr 15 12:37:30 2022
-panda 0
-Fri Apr 15 12:37:30 2022
-byofas 0
-Fri Apr 15 12:41:03 2022
-as 0
-Fri Apr 15 12:41:03 2022
-as 0
-Fri Apr 15 12:41:03 2022
-as 0
-Fri Apr 15 12:41:03 2022
-as 0
-Fri Apr 15 12:41:03 2022
+Truchihi 160
+Fri Apr 15 21:47:47 2022
+Panda 120
+Fri Apr 15 21:40:19 2022
+Truc 110
+Fri Apr 16 21:40:19 2022
+mck 100
+Fri Apr 15 21:47:05 2022
+ngunhubo 100
+Fri Apr 15 21:46:36 2022
+Truchihi 90
+Fri Apr 15 21:47:47 2022
+Panda 80
+Fri Apr 15 21:40:19 2022
+Truc 70
+Fri Apr 16 21:40:19 2022
+mck 70
+Fri Apr 15 21:47:05 2022
+ngunhubo 60
+Fri Apr 15 21:46:36 2022
+Truchihi 50
+Fri Apr 15 21:47:47 2022
+Panda 50
+Fri Apr 15 21:40:19 2022
+Truc 40
+Fri Apr 16 21:40:19 2022
+mck 40
+Fri Apr 15 21:47:05 2022
+ngunhubo 30
+Fri Apr 15 21:46:36 2022
+Truchihi 30
+Fri Apr 15 21:47:47 2022
+Panda 20
+Fri Apr 15 21:40:19 2022
+bidien 10
+Sat Apr 16 00:17:44 2022
+Truc 0
+Fri Apr 16 21:40:19 2022
