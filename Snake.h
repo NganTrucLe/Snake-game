@@ -98,7 +98,8 @@ public:
     }
     void move() {
         gotoXY(position.back().first, position.back().second);
-        cout << (char)255;
+        if (appear[length-1]==1)
+            cout << (char)255;
         for (int i = length - 1; i >= 1; i--) {
             position[i] = position[i - 1];
         }
