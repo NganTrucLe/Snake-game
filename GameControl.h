@@ -29,7 +29,6 @@ class Game {
     pii nextLevelPosition;
 public:
     Game() {
-        ResetHighScore(HighScore);
         score = 0;
         state = IN_GAME;
         level = 1;

@@ -24,7 +24,7 @@ void SaveHighScore(HIGHSCORE HighScore[19])
 	fo.open("highscore.txt");
 
 	for (int i = 0; i < 18; i++)
-		fo << HighScore[i].name << " " << HighScore[i].score << endl << HighScore[i].time << endl;
+		fo << HighScore[i].name << " " << HighScore[i].score << endl << HighScore[i].time<<endl;
 	fo << HighScore[18].name << " " << HighScore[18].score << endl << HighScore[18].time;
 
 	fo.close();
@@ -63,6 +63,7 @@ void InitializeHighScore(HIGHSCORE HighScore[19])
 			fi.getline(time, 30);
 			strcpy(HighScore[i].time, time);
 			i++;
+			if (i == 19)break;
 		}
 
 		fi.close();
@@ -73,33 +74,26 @@ void InitializeHighScore(HIGHSCORE HighScore[19])
 
 void CreateNewHighScore(HIGHSCORE HighScore[19], HIGHSCORE NewScore)
 {
-	int minScore = HighScore[0].score;
+	int minScore = NewScore.score;
 	int index = 0;
-	char* none = new char[10];
-	none[0] = 'N';
-	none[1] = 'O';
-	none[2] = 'N';
-	none[3] = 'E';
 	for (int i = 0; i < 19; i++)
 	{
 		if (strcmp(HighScore[i].name,"NONE")==0)
 		{
-			minScore = HighScore[i].score;
 			index = i;
 			break;
 		}
 		else if (HighScore[i].score < minScore)
 		{
-			minScore = HighScore[i].score;
 			index = i;
+			break;
 		}
 	}
-	if (NewScore.score > minScore || (NewScore.score == 0 && strcmp(HighScore[index].name,"NONE") == 0))
-	{
-		
-			HighScore[index] = NewScore;
-		SaveHighScore(HighScore);
+	for (int j = 19; j > index; j--) {
+		HighScore[j] = HighScore[j - 1];
 	}
+	HighScore[index] = NewScore;
+	SaveHighScore(HighScore);
 }
 
 void SortHighScore(HIGHSCORE HighScore[19])
