@@ -186,6 +186,36 @@ void drawLeaderBoard() {
 	setTextColor(12);
 	cout << "TIME";
 }
+
+void drawKeyBoard()
+{
+	gotoXY(57, 22);
+	cout << "LEFT";
+	gotoXY(71, 22);
+	cout << "RIGHT";
+	gotoXY(66, 20);
+	cout << "UP";
+	gotoXY(65, 24);
+	cout << "DOWN";
+	gotoXY(63, 22);
+	cout << (char)17;
+	gotoXY(69, 22);
+	cout << (char)16;
+	gotoXY(66, 21);
+	cout << (char)30;
+	gotoXY(66, 23);
+	cout << (char)31;
+	gotoXY(79, 22);
+	cout << "OR";
+	gotoXY(83, 22);
+	cout << "A";
+	gotoXY(95, 22);
+	cout << "D";
+	gotoXY(89, 20);
+	cout << "W";
+	gotoXY(89, 24);
+	cout << "S";
+}
 void deleteGameScreen() {
 	for (int i = WALL_ABOVE + 1; i < WALL_BOTTOM; i++)
 		for (int j = WALL_LEFT + 1; j < WALL_RIGHT; j++) {
