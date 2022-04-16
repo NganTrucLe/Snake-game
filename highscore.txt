@@ -34,5 +34,5 @@ Truchihi 50
 Fri Apr 15 21:47:47 2022
 Panda 50
 Fri Apr 15 21:40:19 2022
-Truc 40
+Truc 20
 Fri Apr 16 21:40:19 2022
