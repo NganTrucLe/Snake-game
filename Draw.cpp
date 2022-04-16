@@ -197,6 +197,7 @@ void drawKeyBoard()
 	cout << "UP";
 	gotoXY(65, 24);
 	cout << "DOWN";
+
 	gotoXY(63, 22);
 	cout << (char)17;
 	gotoXY(69, 22);
@@ -205,6 +206,7 @@ void drawKeyBoard()
 	cout << (char)30;
 	gotoXY(66, 23);
 	cout << (char)31;
+
 	gotoXY(79, 22);
 	cout << "OR";
 	gotoXY(83, 22);
@@ -215,6 +217,15 @@ void drawKeyBoard()
 	cout << "W";
 	gotoXY(89, 24);
 	cout << "S";
+
+	gotoXY(85, 22);
+	cout << (char)17;
+	gotoXY(93, 22);
+	cout << (char)16;
+	gotoXY(89, 21);
+	cout << (char)30;
+	gotoXY(89, 23);
+	cout << (char)31;
 }
 void deleteGameScreen() {
 	for (int i = WALL_ABOVE + 1; i < WALL_BOTTOM; i++)
@@ -376,26 +387,26 @@ void announceGameOver(int score, char*& saveName) {
 	setTextColor(15);
 }
 void announceWin(const int score, char *&saveName) {
-	deleteAnnounceArea();
-	setTextColor(11);
-	UINT old_cp = GetConsoleOutputCP();
-	SetConsoleOutputCP(CP_UTF8);
-	gotoXY(15, 27);
-	setTextColor(12);
-	cout << u8"██    ██ ██  ██████ ████████  ██████  ██████  ██    ██";
-	gotoXY(15, 28);
-	setTextColor(12);
-	cout << u8"██    ██ ██ ██         ██    ██    ██ ██   ██  ██  ██";
-	gotoXY(15, 29);
-	setTextColor(12);
-	cout << u8"██    ██ ██ ██         ██    ██    ██ ██████    ████";
-	gotoXY(15, 30);
-	setTextColor(12);
-	cout << u8" ██  ██  ██ ██         ██    ██    ██ ██   ██    ██";
-	gotoXY(15, 31);
-	setTextColor(12);
-	cout << u8"  ████   ██  ██████    ██     ██████  ██   ██    ██";
-	SetConsoleOutputCP(old_cp);
+		deleteAnnounceArea();
+		setTextColor(11);
+		UINT old_cp = GetConsoleOutputCP();
+		SetConsoleOutputCP(CP_UTF8);
+		gotoXY(15, 27);
+		setTextColor(12);
+		cout << u8"██    ██ ██  ██████ ████████  ██████  ██████  ██    ██";
+		gotoXY(15, 28);
+		setTextColor(12);
+		cout << u8"██    ██ ██ ██         ██    ██    ██ ██   ██  ██  ██";
+		gotoXY(15, 29);
+		setTextColor(12);
+		cout << u8"██    ██ ██ ██         ██    ██    ██ ██████    ████";
+		gotoXY(15, 30);
+		setTextColor(12);
+		cout << u8" ██  ██  ██ ██         ██    ██    ██ ██   ██    ██";
+		gotoXY(15, 31);
+		setTextColor(12);
+		cout << u8"  ████   ██  ██████    ██     ██████  ██   ██    ██";
+		SetConsoleOutputCP(old_cp);
 	deleteGameScreen();
 	gotoXY(30, 8);
 	cout << "Your score: " << score;

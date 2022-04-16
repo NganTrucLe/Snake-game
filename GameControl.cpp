@@ -281,7 +281,7 @@ void Game::loadLevel(int n) {
 }
 void Game::nextLevel()
 {
-    if (score == 5 * 30)handleAfterWin();
+    if (score == 30*5)handleAfterWin();
     if (score == 30 * level)
     {
         MyFruit.deleteFruit();
