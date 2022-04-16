@@ -106,9 +106,9 @@ void Menu::flower()
     cout << R"(
 
 
-                    wWWWw                 wWWWw              wWWWw                 wWWWw             wWWWw               
-                vVVVv (___) wWWWw         (___)  vVVVv  vVVVv (___) wWWWw         (___)  vVVVv  vVVVv (___) wWWWw        
-                (___)  ~Y~  (___)  vVVVv   ~Y~   (___)  (___)  ~Y~  (___)  vVVVv   ~Y~   (___)  (___)  ~Y~  (___)  vVVVv   
+                      wWWWw               wWWWw               wWWWw              wWWWw               wWWWw               
+                vVVVv (___) wWWWw         (___)  vVVVv  vVVVv (___) wWWWw        (___)  vVVVv  vVVVv (___) wWWWw        
+                (___)  ~Y~  (___)  vVVVv   ~Y~   (___)  (___)  ~Y~  (___) vVVVv   ~Y~   (___)  (___)  ~Y~  (___)  vVVVv   
                 ~Y~   \|    ~Y~   (___)    |/    ~Y~    ~Y~   \|    ~Y~   (___)    |/    ~Y~    ~Y~   \|    ~Y~   (___)       
                 \|   \ |/   \| /  \~Y~/   \|    \ |/    \|   \ |/   \| /  \~Y~/   \|    \ |/    \|   \ |/   \| /  \~Y~/  
                 \\|// \\|// \\|/// \\|//  \\|// \\\|/// \\|// \\|// \\|/// \\|//  \\|// \\\|/// \\|// \\|// \\|/// \\|//      
@@ -240,7 +240,7 @@ void Menu::introduction() {
     cout << u8"██║██╔██╗ ██║   ██║   ██████╔╝██║   ██║██║  ██║██║   ██║██║        ██║   ██║██║   ██║██╔██╗ ██║";
     gotoXY(20, 8);
     cout << u8"██║██║╚██╗██║   ██║   ██╔══██╗██║   ██║██║  ██║██║   ██║██║        ██║   ██║██║   ██║██║╚██╗██║";
-    setTextColor(9);
+    gotoXY(20, 9);
     cout << u8"██║██║ ╚████║   ██║   ██║  ██║╚██████╔╝██████╔╝╚██████╔╝╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║";
     gotoXY(20, 10);
     cout << u8"██║██║ ╚████║   ██║   ██║  ██║╚██████╔╝██████╔╝╚██████╔╝╚██████╗   ██║   ██║╚██████╔╝██║ ╚████║";
@@ -363,21 +363,21 @@ void Menu::exitGame() {
 void Menu::border()
 {
     cout << R"(
-            /|  /|  ---------------------------
-            ||__||  |                         |
-            /   O O\__    You want to play?    |
-            /          \      Let's play!       |
-            /      \     \                       |
-        /   _    \     \ ----------------------
-        /    |\____\     \      ||
-        /     | | | |\____/      ||
-        /       \| | | |/ |     __||
-    /  /  \   -------  |_____| ||
-    /   |   |           |       --|
-    |   |   |           |_____  --|
-    |  |_|_|_|          |     \----
-    /\                  |
-    / /\        |        /
+                /|  /|  ---------------------------
+                ||__||  |                         |
+               /   O O\__    You want to play?    |
+              /          \      Let's play!       |
+             /      \     \                       |
+            /   _    \     \ ----------------------
+           /    |\____\     \      ||
+          /     | | | |\____/      ||
+         /       \| | | |/ |     __||
+        /  /  \   -------  |_____| ||
+      /   |   |           |       --|
+      |   |   |           |_____  --|
+      |  |_|_|_|          |     \----
+      /\                  |
+     / /\        |        /
     / /  |       |       |
 ___/ /   |       |       |
 |____/    c_c_c_C/ \C_c_c_c
@@ -404,18 +404,20 @@ void Menu::howToPlay()
     SetConsoleOutputCP(old_cp);
     gotoXY(57, 17);
     cout << "WELCOME TO HUNTING SNAKE";
-    gotoXY(52, 19);
+    gotoXY(53, 19);
     setTextColor(14);
     cout << "How to move: ";
     drawKeyBoard();
     border();
-    gotoXY(52, 19);
+    gotoXY(53, 19);
     cout << "Eat 3 fruits to pass to the next level.";
-    gotoXY(52, 21);
+    gotoXY(53, 21);
     cout << "Go through the gate to move to next level!";
-    gotoXY(52, 23);
+    gotoXY(53, 23);
     cout << "Avoid touching wall, gate, and yourself!";
-    gotoXY(52, 25);
+    gotoXY(53, 25);
+    cout << "Press space bar to pause game, press again to continue";
+    gotoXY(53, 27);
     cout << "Finally, enjoy the game!";
     backButton(52, 33);
 }
